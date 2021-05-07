@@ -1,0 +1,56 @@
+
+  
+  .homebg {
+    padding-top: 1px;
+    height: 100%;
+    padding-bottom: 10px;
+    background-image: url("https://images.unsplash.com/photo-1515606378517-3451a4fa2e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGZpbmFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* FORM */
+  
+  .form-signin {
+    background-image: linear-gradient(to right, #5637dd, #3046c5, #60106b);
+    border-radius: 5%;
+    width: 290px;
+    margin-top: 200px;
+    margin-left: 30px;
+    color:white;
+    padding: 20px;
+    margin-bottom: 100px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+  
+  }
+  
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    margin: 0 auto;
+  
+    font-size: 16px;
+    width: 250px;
+  }
+  
+  /* .form-signin .form-control:focus {
+    z-index: 2;
+  } */
+  
+  .form-signin .input {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin .input {
+    padding-left: 10px;
+    padding-right: 10px;
+  
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+ 
