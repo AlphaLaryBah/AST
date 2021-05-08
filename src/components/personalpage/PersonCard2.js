@@ -15,7 +15,8 @@ const PersonCard2 = (props) => {
         <img width="100%" src="https://components.smartsparrow.com/uploads/widget-carousel/pie-chart1.png" alt="charts" />
         <CardBody>
           {props.generalInfo}
-          {props.Dailyespenses}
+          {props.Dailyexpenses}
+          {props.calcul}
           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
           <CardLink href="#">Card Link</CardLink>
           <CardLink href="#">Another Link</CardLink>

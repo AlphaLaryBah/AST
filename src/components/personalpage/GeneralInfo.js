@@ -3,8 +3,14 @@ import { InputGroup,InputGroupAddon,
     Button, Form, FormGroup, Label, Input, Col,Table} from 'reactstrap';
 
 
-
-   
+function Final(props) {
+    return (<div>
+        <p>The total is {props.fin} </p>
+        </div>
+    );
+    
+}
+// let Finito = [];
     class GeneralInfo extends Component {
     constructor(props) {
         super(props);
@@ -29,8 +35,6 @@ import { InputGroup,InputGroupAddon,
         //     console.log(estimatedIncome);
         //      const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-
-        
     }
          
 
@@ -43,7 +47,7 @@ import { InputGroup,InputGroupAddon,
             [name]: value
         });
     }
-    
+
         handleSubmit(event) {
             const total = [];
         console.log('Current state is: ' + JSON.stringify(this.state));
@@ -61,17 +65,19 @@ import { InputGroup,InputGroupAddon,
 
             console.log(estimatedIncome.reduce(reducer));
 
-         let final= this.props.estimatedIncome.reduce(reducer)
-            // return (
-            //     <h3>Total is: {estimatedIncome.reduce(reducer) }</h3>
-            // );
+           let finito= estimatedIncome.reduce(reducer)
+            console.log(finito)
+             return (
+              {finito}
+             );
             
-         
-            
+
+
         }
-       
+
         render() {
-    return(
+            return (
+
 
                 <div className="row row-content">
             <div className="col-12">
@@ -176,7 +182,8 @@ import { InputGroup,InputGroupAddon,
                             <td>{this.state.estimate}</td>
                             <td>{this.state.investments}</td>
                             <td>{this.state.gifts}</td>
-                            <td> = { this.props.final}</td>
+                            <td> =         <handleSubmit finito />
+</td>
 
 
     </tr>

@@ -8,6 +8,7 @@ import PersonCard2 from "./personalpage/PersonCard2";
 import PersonCard3 from "./personalpage/PersonCard3";
 import GeneralInfo from "./personalpage/GeneralInfo";
 import DailyExpenses from "./personalpage/DailyExpenses";
+import Calculate from "./Calculate";
 import "./personal.css";
 
 
@@ -42,8 +43,11 @@ function Personal() {
             <PersonCard2
               generalInfo={<GeneralInfo />
               }
-              Dailyespenses={
+              Dailyexpenses={
                 <DailyExpenses />}
+              calcul={
+                <Calculate />
+              }
                 />
               
           
