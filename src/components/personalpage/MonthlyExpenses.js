@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { InputGroup,InputGroupAddon,
     Button, Form, FormGroup, Label, Input, Col,Table} from 'reactstrap';
-import Chart from "../Chart"
 
+
+
+   
     class GeneralInfo extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            income:"",
-            estimate: "",
-            investments: "",
-            debts: ""
+            groceries:"",
+            eatingOut: "",
+            transportation: "",
+            onlinePurchases: ""
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -19,6 +21,8 @@ import Chart from "../Chart"
         
        
 
+
+        
     }
          
 
@@ -31,66 +35,53 @@ import Chart from "../Chart"
             [name]: value
         });
     }
-
+    
         handleSubmit(event) {
-            // CREATE AN ARRAY TO TO HOLD INPUT
             const total = [];
-            // CREATE A PROP TO PASS AS STATE FOR THE TABLE
-            let finito = this.props.finito;
+            let monthly= this.props.finito;
 
         console.log('Current state is: ' + JSON.stringify(this.state));
             // alert('Current state is: ' + JSON.stringify(this.state));
-
-            // PREVENT REFRESH DEFAULT ON SUBMIT
             event.preventDefault();
 
-
-            // GETTING INPUT VALUE AND PUSHING INTO THE ARRAY OBJECT TOTAL
-            total.push(this.state.income);
-            total.push(this.state.estimate);
-            total.push(this.state.investments);
-            total.push(this.state.debts);
-
-            // TURNING ARRAY OBJECT TOTAL INTO NUMBE
-            const estimatedIncome = total.map((i) => Number(i));
-
-            // ADD UP TOTAL 
+            total.push(this.state.groceries);
+            total.push(this.state.eatingOut);
+            total.push(this.state.transportation);
+            total.push(this.state.onlinePurchases);
+            console.log(total);
+            const monthlyLiabilities = total.map((i) => Number(i));
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-            finito= estimatedIncome.reduce(reducer)
-        //    SET STATE FOR FINITO SO THAT I CAN CALL IT IN THE TABLE RENDER
-            this.setState({finito})
-           
 
+         monthly=monthlyLiabilities.reduce(reducer)
+            
+         this.setState({monthly})
+
+         
+            
         }
-
+       
         render() {
-            return (<div>
-
-                <Chart  data1={ this.state.income }
-                
-                   />
-    
-                 
+    return(
 
                 <div className="row row-content">
             <div className="col-12">
                 <hr />
-                        <h2 className="text-center">GENERAL INFORMATION</h2>
+                        <h2 className="text-center bg-danger rounded text-light">MONTHLY EXPENSES(Liabilities)</h2>
                         <hr />
                     </div>
                     <div className="col-md-10">
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="income" md={3}>Your Income</Label>
+                                <Label htmlFor="groceries" md={3}>Groceries</Label>
                                 <Col md={9}>
                                     
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                                     id="income" name="income"
-                                        placeholder="Your Income"
-                                        value={this.state.income}
+                                     id="groceries" name="groceries"
+                                        placeholder="Your groceries"
+                                        value={this.state.groceries}
                                         onChange={this.handleInputChange}
                                 />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -99,14 +90,14 @@ import Chart from "../Chart"
                                 </Col>
                             </FormGroup>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="estimate" md={3}>Estimated Income</Label>
+                                <Label htmlFor="eatingOut" md={3}>Eating Out</Label>
                                 <Col md={9}>
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1} type="number" step="1"
-                                    id="estimate" name="estimate"
-                                            placeholder="Your Estimate"
-                                            value={this.state.estimate}
+                                    id="eatingOut" name="eatingOut"
+                                            placeholder="Eating Out"
+                                            value={this.state.eatingOut}
                                             onChange={this.handleInputChange}
                                />
                             <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -114,13 +105,13 @@ import Chart from "../Chart"
                                 </Col>                        
                                 </FormGroup>
                                 <FormGroup row className="mb-3">
-                                <Label htmlFor="investments" md={3}>Investments</Label>
+                                <Label htmlFor="transportation" md={3}>Transportation</Label>
                                 <Col md={9}>
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                                    id="investments" name="investments"
-                                    placeholder="Your Investments"
+                                    id="transportation" name="transportation"
+                                    placeholder="Your Transportation"
                                     value={this.state.stocks}
                                     onChange={this.handleInputChange}                        />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -128,14 +119,14 @@ import Chart from "../Chart"
                                 </Col>
                             </FormGroup>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="debts" md={3}>Debts</Label>
+                                <Label htmlFor="onlinePurchases" md={3}>Online Purchases</Label>
                                 <Col md={9}>
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                            id="debts" name="debts"
-                            placeholder="Your  Debts"
-                            value={this.state.debts}
+                            id="onlinePurchases" name="onlinePurchases"
+                            placeholder="Your  online Purchases"
+                            value={this.state.onlinePurchases}
                             onChange={this.handleInputChange}                        />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
                             </InputGroup>
@@ -145,70 +136,70 @@ import Chart from "../Chart"
                           <FormGroup row className="mt-3">
                                 <Col md={{size: 10, offset: 2}}>
                                     <Button type="submit" color="success">
-                                        Submit
+                                        Calculate
                                     </Button>
                                 </Col>
                             </FormGroup>
                 </Form>
                 <hr/>
             </div>
-            <div className="mt-3 mb-3 bg-dark p-3 ">
-                  <Table hover className="bg-light mt-2 rounded p-3">
-  
-                            <thead>
+            <div className="mt-3 mb-3 bg-dark p-3 container-fluid">
+                <div className="row">
+                <div className="">              
     
-                                <tr>
-                                    <th className="text-success text-center">General Information</th>
+<Table hover className="bg-light mt-2 rounded  ">
+                            <thead>
+
+                            <tr>
+                                    <th className="text-success text-center">Daily Expenses</th>
                                     </tr>
                                     <tr>
 
-                                    <th>Income</th>
-                                    <td>{this.state.income}</td>
-
-                            
-                                </tr>
-                            <tr>
-
-                                    <th>Estimate</th>
-                                    <td>{this.state.estimate}</td>
-
-                                    
-                                </tr>
-                                   
-                                <tr>
-
-                                    <th>Investment</th>
-                                    <td>{this.state.investments}</td>
-
-                                    
-                                </tr>
-                                   
-                                <tr>
-
-                                    <th>debts</th>
-                                    <td>{this.state.debts}</td>
+                                    <th>Groceries</th>
+                                    <td>{ this.state.groceries}</td>
 
                                     </tr>
+                                    <tr>
 
-                                <tr>
 
-                                    <th>Total</th>
-                                    <td> =     {this.state.finito}</td>
-                                           
-                                </tr>
-                                       
-                            </thead>
-                                        
-                      </Table>
+                                    <th>EatingOut</th>
+                                    <td>{this.state.eatingOut}</td>
 
-                                            
-                    
-                    </div>
+                                    </tr>
+                                    <tr>
 
-            </div>
+                                    <th>Investments</th>
+                                    <td>{this.state.transportation}</td>
+
+                                    </tr>
+                                    <tr>
+
+                                    <th>On-line Purchases</th>
+                                    <td>{this.state.onlinePurchases}</td>
+
+                                    </tr>
+                                    <tr>
+
+                            <th>Total</th>
+                            <td> =  {this.state.monthly}</td>
+
+
+                            
+                                    </tr>
+
+                        </thead>
+                       
+</Table>
+
+    
                 
             </div>
+                </div>
+                </div>
+                </div>
 
+                
+               
     );
     
    

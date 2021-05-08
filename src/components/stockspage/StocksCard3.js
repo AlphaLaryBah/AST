@@ -6,10 +6,10 @@ const StocksCard3 = (props) => {
   return (
     <div>
       <Card body outline color="secondary">
-        <CardTitle tag="h5" className="text-center  text-success">NET INCOME</CardTitle>
-        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <CardTitle tag="h5" className="text-center  text-success">{props.cardTitle}</CardTitle>
+        <CardText>{props.cardText}</CardText>
       </Card>
-      <Card body outline color="primary">
+      {/* <Card body outline color="primary">
         <CardTitle tag="h5">Special Title Treatment</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
       </Card>
@@ -28,7 +28,7 @@ const StocksCard3 = (props) => {
       <Card body outline color="danger">
         <CardTitle tag="h5">Special Title Treatment</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-      </Card>
+      </Card> */}
     
     </div>
   );

@@ -1,37 +1,52 @@
 import React from 'react';
-import { Card, CardTitle, CardText } from 'reactstrap';
-// import GeneralInfo, { Estimated } from "./GeneralInfo";
+import { Card, CardTitle, CardText,Badge } from 'reactstrap';
+// import PopOverCalc from "../PopOverCalc"
 
 const PersonCard1= (props) => {
   return (
     <div>
       <Card body outline color="secondary">
-        <CardTitle tag="h5"  className="text-center text-success">ASSETS</CardTitle>
-        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <CardTitle tag="h5"  className="text-center text-success">ASSETS/YEAR</CardTitle>
+        <CardText className="text-left">
+          <p>Income <Badge color="info" className="text-info bg-dark">info</Badge></p>
+          <p> Estimated <Badge color="info" className="text-info bg-dark">Info</Badge></p>
+          <p>Investments  <Badge color="info" className="text-info bg-dark">Info</Badge></p> 
+
+          <p>Assets Value  <Badge color="info" className="text-info bg-dark">Info</Badge></p> 
+
+
+        </CardText>
       </Card>
       <Card body outline color="primary">
-        <CardTitle tag="h5">Simple Interest</CardTitle>
-        <CardText>Simple Interest: i = p*r*t <br/>
-i is the interest, in $<br/>
-p is the principal, in $<br/>
-r is the interest rate in decimal form, <br/>
-t is the term (time in years). </CardText>
+        <CardTitle tag="h5" className="text-center text-success">LIABILITIES</CardTitle>
+        <p>Debts  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
+        
+
+        <CardText>
+        </CardText>
       </Card>
-      <Card body outline color="success">
-        <CardTitle tag="h5">ESTIMATED Income</CardTitle>
-        <CardText></CardText>
-      </Card>
+      {/* <Card body outline color="success" className="">
+        <CardTitle tag="h5"></CardTitle>
+        <CardText>
+          
+          <PopOverCalc />
+
+        </CardText>
+      </Card> */}
       <Card body outline color="info">
-        <CardTitle tag="h5">Special Title Treatment</CardTitle>
-        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <CardTitle tag="h5" className="text-center text-success">DAILY EXPENSES</CardTitle>
+        <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p> 
+</CardText>
       </Card>
       <Card body outline color="warning">
-        <CardTitle tag="h5">Special Title Treatment</CardTitle>
-        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <CardTitle tag="h5" className="text-center text-success">WEEKLY EXPENSES</CardTitle>
+        <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p> 
+</CardText>
       </Card>
       <Card body outline color="danger">
-        <CardTitle tag="h5">Special Title Treatment</CardTitle>
-        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+        <CardTitle tag="h5"  className="text-center text-success">MONTHLY EXPENSES</CardTitle>
+        <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p> 
+</CardText>
       </Card>
     </div>
   );

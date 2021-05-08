@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'reactstrap';
-
+import PopOverCalc from "../PopOverCalc"
 const StocksCard1= (props) => {
   return (
     <div>
@@ -11,15 +11,20 @@ const StocksCard1= (props) => {
         {props.children}
 
       </Card>
-      <Card body outline color="primary">
+      {/* <Card body outline color="primary">
         <CardTitle tag="h5">CURRENT Income</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-      </Card>
+      </Card> */}
       <Card body outline color="success">
-        <CardTitle tag="h5">ESTIMATED Income</CardTitle>
-        <CardText></CardText>
+        <CardTitle tag="h5"></CardTitle>
+        <CardText>
+          
+          <PopOverCalc />
+
+
+        </CardText>
       </Card>
-      <Card body outline color="info">
+      {/* <Card body outline color="info">
         <CardTitle tag="h5">Special Title Treatment</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
       </Card>
@@ -30,7 +35,7 @@ const StocksCard1= (props) => {
       <Card body outline color="danger">
         <CardTitle tag="h5">Special Title Treatment</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-      </Card>
+      </Card> */}
     </div>
   );
 };

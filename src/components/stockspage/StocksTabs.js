@@ -113,7 +113,7 @@ export default function StocksTabs() {
                 <hr />
 
                 <h5 className="text-center text-info">LEADERSHIP:</h5>
-                <ul>
+                <ul className="overFlow">
                   <hr />
                   <li>
                     <strong className="text-info">CURRENT RATIO:</strong>{" "}
@@ -191,7 +191,7 @@ export default function StocksTabs() {
                 <h5 className="text-center text-info">
                   (M.O.S) MARGIN OF SAFETY:
                 </h5>
-                <ul>
+                <ul className="overFlow">
                   <hr />
                   <StocksTable />
                   <hr />
@@ -363,7 +363,7 @@ export default function StocksTabs() {
                 <hr />
 
                 <h5 className="text-center">Asset:</h5>
-                <ul>
+                <ul className="overFlow">
                   <hr />
                   <li>
                     An asset must not only hold its value over time. However, it
@@ -465,7 +465,7 @@ export default function StocksTabs() {
                 <hr />
 
                 <h5 className="text-center">LIABILITIES:</h5>
-                <ul>
+                <ul className="overFlow">
                   <hr />
                   <li>
                     A liability does not hold its value, it decreases its value

@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import {render} from 'react-dom'
 import Calculator from "awesome-react-calculator";
  
 const style = {
   height: '24rem',
-  width: '15rem'
+  width: '16rem'
 }
  
 class Calculate extends Component {
@@ -17,8 +16,7 @@ class Calculate extends Component {
     console.log(`${newResult.expression} is validated as ${newResult.result} `)
   }
   render() {
-    return <div className='calculator-demo' style={style}>
-      <h1>Calculator</h1>
+    return <div className='calculator-demo p-3' style={style}>
       <Calculator
         onNewInput={this.handleInput}
         onResultChange={this.onResultChange}/>

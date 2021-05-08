@@ -41,19 +41,19 @@ function Stocks() {
 
               cardText={
                 <StocksList 
-                  list1="Price:"
-                  badge1="$10"
+                  list1="ROIC"
+                  badge1=">=10% Anual"
 
                   list2="EPS:"
-                  badge2="$2"
+                  badge2=">=10% Anual"
                   list3="B/V:"
-                  badge3="0.7000"
+                  badge3=">=10% Anual"
                   list4="P/E:"
-                  badge4="5"
+                  badge4="0"
                   list5="P/BV:"
-                  badge5="14.3"
+                  badge5="0"
                   list6="INTEREST RATES"
-                  badge6="2.04"
+                  badge6="1.60%"
                 />
               }
 
@@ -72,7 +72,27 @@ function Stocks() {
           
         </div>
         <div className="col-sm-6 col-md-4 col-lg-2">
-<StocksCard3 />
+            <StocksCard3
+               cardTitle="KEY RATIOS"
+
+cardText={
+  <StocksList 
+    list1="Det/Equity:"
+    badge1="0.50"
+
+    list2="Current:"
+    badge2="1.50"
+    list3="FCF:"
+    badge3=">=10% Anual"
+    // list4="P/E:"
+    // badge4="0"
+    // list5="P/BV:"
+    // badge5="0"
+    // list6="INTEREST RATES"
+    // badge6="1.60%"
+  />
+}
+/>
           
         </div>
 

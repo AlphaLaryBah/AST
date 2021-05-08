@@ -19,15 +19,7 @@ import { InputGroup,InputGroupAddon,
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         
-        // const total = []
-        // total.push(this.state.groceries);
-        //      total.push(this.state.eatingOut);
-        //      total.push(this.state.transportation);
-        //      total.push(this.state.onlinePurchases);
-        //     console.log(total);
-        // const eatingOutdgroceries = total.map((i) => Number(i));
-        //     console.log(eatingOutdgroceries);
-        //      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+       
 
 
         
@@ -46,8 +38,10 @@ import { InputGroup,InputGroupAddon,
     
         handleSubmit(event) {
             const total = [];
+            let daily= this.props.finito;
+
         console.log('Current state is: ' + JSON.stringify(this.state));
-            alert('Current state is: ' + JSON.stringify(this.state));
+            // alert('Current state is: ' + JSON.stringify(this.state));
             event.preventDefault();
 
             total.push(this.state.groceries);
@@ -55,17 +49,15 @@ import { InputGroup,InputGroupAddon,
             total.push(this.state.transportation);
             total.push(this.state.onlinePurchases);
             console.log(total);
-            const eatingOutdgroceries = total.map((i) => Number(i));
-            console.log(eatingOutdgroceries);
+            const dailyLiabilities = total.map((i) => Number(i));
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-            console.log(eatingOutdgroceries.reduce(reducer));
+            console.log(dailyLiabilities.reduce(reducer));
 
-         let final= this.props.eatingOutdgroceries.reduce(reducer)
-            // return (
-            //     <h3>Total is: {eatingOutdgroceries.reduce(reducer) }</h3>
-            // );
+         daily=dailyLiabilities.reduce(reducer)
             
+         this.setState({daily})
+
          
             
         }
@@ -76,7 +68,7 @@ import { InputGroup,InputGroupAddon,
                 <div className="row row-content">
             <div className="col-12">
                 <hr />
-                        <h2 className="text-center">DAILY EXPENSES(Liabilities)</h2>
+                        <h2 className="text-center rounded bg-primary text-light">DAILY EXPENSES(Liabilities)</h2>
                         <hr />
                     </div>
                     <div className="col-md-10">
@@ -154,39 +146,50 @@ import { InputGroup,InputGroupAddon,
             </div>
             <div className="mt-3 mb-3 bg-dark p-3 container-fluid">
                 <div className="row">
-                <div className="col-sm-6">              
+                <div className="">              
     
-<Table hover className="bg-light mt-2 rounded p-3 ">
+<Table hover className="bg-light mt-2 rounded  ">
                             <thead>
 
                             <tr>
-                            <th className="text-success">Daily Expenses</th>
-                            <th>groceries</th>
+                                    <th className="text-success text-center">Daily Expenses</th>
+                                    </tr>
+                                    <tr>
 
-                            <th>eatingOut</th>
-                            <th>Investment</th>
-                            <th>onlinePurchases</th>
+                                    <th>Groceries</th>
+                                    <td>{ this.state.groceries}</td>
+
+                                    </tr>
+                                    <tr>
+
+
+                                    <th>EatingOut</th>
+                                    <td>{this.state.eatingOut}</td>
+
+                                    </tr>
+                                    <tr>
+
+                                    <th>Investments</th>
+                                    <td>{this.state.transportation}</td>
+
+                                    </tr>
+                                    <tr>
+
+                                    <th>On-line Purchases</th>
+                                    <td>{this.state.onlinePurchases}</td>
+
+                                    </tr>
+                                    <tr>
+
                             <th>Total</th>
+                            <td> =  {this.state.daily}</td>
 
 
                             
                                     </tr>
 
                         </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row"></th>
-
-                            <td>{ this.state.groceries}</td>
-                            <td>{this.state.eatingOut}</td>
-                            <td>{this.state.transportation}</td>
-                            <td>{this.state.onlinePurchases}</td>
-                            <td> = </td>
-
-
-    </tr>
-   
-  </tbody>
+                       
 </Table>
 
     
@@ -206,4 +209,3 @@ import { InputGroup,InputGroupAddon,
     }
     
     export default GeneralInfo;
-    // export {eatingOutd};
