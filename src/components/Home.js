@@ -10,11 +10,10 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="homebg " > 
-    <div className="row  text-light"style={{ marginTop: 50 }} >
-    <div className="col">
+    <div className="row  text-light"style={{ marginTop: 53 }} >
+    <div className="col bg-dark" >
         <Breadcrumb>
-        <Breadcrumb.Item><Link to="/home">Home</Link></Breadcrumb.Item>
-        <Breadcrumb.Item active>Stocks</Breadcrumb.Item>
+        <Breadcrumb.Item><Link className="text-light"to="/home">Home</Link></Breadcrumb.Item>
         </Breadcrumb>
         <hr />
     </div>

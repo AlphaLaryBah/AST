@@ -1,0 +1,8 @@
+.stocksBg{
+    /* background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,151,233,1) 100%); */
+  background-image: url("https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fG5ld3NwYXBlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"); 
+  background-repeat: no-repeat;
+    background-size: cover; 
+  }
+  

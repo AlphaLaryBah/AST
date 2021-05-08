@@ -4,7 +4,7 @@ import {
   CardTitle, CardSubtitle
 } from 'reactstrap';
 
-const PersonCard2 = (props) => {
+const StocksCard2 = (props) => {
   return (
     <div>
       <Card>
@@ -14,9 +14,10 @@ const PersonCard2 = (props) => {
         </CardBody>
         <img width="100%" src="https://components.smartsparrow.com/uploads/widget-carousel/pie-chart1.png" alt="charts" />
         <CardBody>
-          {props.generalInfo}
-          {props.Dailyespenses}
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          
+
+          <CardText>{props.StocksTbas}
+</CardText>
           <CardLink href="#">Card Link</CardLink>
           <CardLink href="#">Another Link</CardLink>
         </CardBody>
@@ -25,4 +26,4 @@ const PersonCard2 = (props) => {
   );
 };
 
-export default PersonCard2;
+export default StocksCard2;

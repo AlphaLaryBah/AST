@@ -10,23 +10,23 @@ import { InputGroup,InputGroupAddon,
         super(props);
 
         this.state = {
-            income:"",
-            estimate: "",
-            investments: "",
-            gifts: ""
+            groceries:"",
+            eatingOut: "",
+            transportation: "",
+            onlinePurchases: ""
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         
         // const total = []
-        // total.push(this.state.income);
-        //      total.push(this.state.estimate);
-        //      total.push(this.state.investments);
-        //      total.push(this.state.gifts);
+        // total.push(this.state.groceries);
+        //      total.push(this.state.eatingOut);
+        //      total.push(this.state.transportation);
+        //      total.push(this.state.onlinePurchases);
         //     console.log(total);
-        // const estimatedIncome = total.map((i) => Number(i));
-        //     console.log(estimatedIncome);
+        // const eatingOutdgroceries = total.map((i) => Number(i));
+        //     console.log(eatingOutdgroceries);
         //      const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 
@@ -50,20 +50,20 @@ import { InputGroup,InputGroupAddon,
             alert('Current state is: ' + JSON.stringify(this.state));
             event.preventDefault();
 
-            total.push(this.state.income);
-            total.push(this.state.estimate);
-            total.push(this.state.investments);
-            total.push(this.state.gifts);
+            total.push(this.state.groceries);
+            total.push(this.state.eatingOut);
+            total.push(this.state.transportation);
+            total.push(this.state.onlinePurchases);
             console.log(total);
-            const estimatedIncome = total.map((i) => Number(i));
-            console.log(estimatedIncome);
+            const eatingOutdgroceries = total.map((i) => Number(i));
+            console.log(eatingOutdgroceries);
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-            console.log(estimatedIncome.reduce(reducer));
+            console.log(eatingOutdgroceries.reduce(reducer));
 
-         let final= this.props.estimatedIncome.reduce(reducer)
+         let final= this.props.eatingOutdgroceries.reduce(reducer)
             // return (
-            //     <h3>Total is: {estimatedIncome.reduce(reducer) }</h3>
+            //     <h3>Total is: {eatingOutdgroceries.reduce(reducer) }</h3>
             // );
             
          
@@ -76,21 +76,21 @@ import { InputGroup,InputGroupAddon,
                 <div className="row row-content">
             <div className="col-12">
                 <hr />
-                        <h2 className="text-center">GENERAL INFORMATION</h2>
+                        <h2 className="text-center">DAILY EXPENSES(Liabilities)</h2>
                         <hr />
                     </div>
                     <div className="col-md-10">
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="income" md={3}>Your Income</Label>
+                                <Label htmlFor="groceries" md={3}>Groceries</Label>
                                 <Col md={9}>
                                     
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                                     id="income" name="income"
-                                        placeholder="Your Income"
-                                        value={this.state.income}
+                                     id="groceries" name="groceries"
+                                        placeholder="Your groceries"
+                                        value={this.state.groceries}
                                         onChange={this.handleInputChange}
                                 />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -99,14 +99,14 @@ import { InputGroup,InputGroupAddon,
                                 </Col>
                             </FormGroup>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="estimate" md={3}>Estimated Income</Label>
+                                <Label htmlFor="eatingOut" md={3}>Eating Out</Label>
                                 <Col md={9}>
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1} type="number" step="1"
-                                    id="estimate" name="estimate"
-                                            placeholder="Your Estimate"
-                                            value={this.state.estimate}
+                                    id="eatingOut" name="eatingOut"
+                                            placeholder="Eating Out"
+                                            value={this.state.eatingOut}
                                             onChange={this.handleInputChange}
                                />
                             <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -114,13 +114,13 @@ import { InputGroup,InputGroupAddon,
                                 </Col>                        
                                 </FormGroup>
                                 <FormGroup row className="mb-3">
-                                <Label htmlFor="investments" md={3}>Investments</Label>
+                                <Label htmlFor="transportation" md={3}>Transportation</Label>
                                 <Col md={9}>
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                                    id="investments" name="investments"
-                                    placeholder="Your Investments"
+                                    id="transportation" name="transportation"
+                                    placeholder="Your Transportation"
                                     value={this.state.stocks}
                                     onChange={this.handleInputChange}                        />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
@@ -128,14 +128,14 @@ import { InputGroup,InputGroupAddon,
                                 </Col>
                             </FormGroup>
                             <FormGroup row className="mb-3">
-                                <Label htmlFor="gifts" md={3}>Gifts</Label>
+                                <Label htmlFor="onlinePurchases" md={3}>Online Purchases</Label>
                                 <Col md={9}>
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
-                            id="gifts" name="gifts"
-                            placeholder="Your  Gifts"
-                            value={this.state.gifts}
+                            id="onlinePurchases" name="onlinePurchases"
+                            placeholder="Your  online Purchases"
+                            value={this.state.onlinePurchases}
                             onChange={this.handleInputChange}                        />
                                 <InputGroupAddon addonType="append">.00</InputGroupAddon>
                             </InputGroup>
@@ -145,38 +145,43 @@ import { InputGroup,InputGroupAddon,
                           <FormGroup row className="mt-3">
                                 <Col md={{size: 10, offset: 2}}>
                                     <Button type="submit" color="success">
-                                        Submit
+                                        Calculate
                                     </Button>
                                 </Col>
                             </FormGroup>
                 </Form>
                 <hr/>
             </div>
-            <div className="mt-3 mb-3 bg-dark p-3 ">
-<Table hover className="bg-light mt-2 rounded p-3">
-  <thead>
-    <tr>
-                            <th className="text-success">General Information</th>
-                            <th>Income</th>
+            <div className="mt-3 mb-3 bg-dark p-3 container-fluid">
+                <div className="row">
+                <div className="col-sm-6">              
+    
+<Table hover className="bg-light mt-2 rounded p-3 ">
+                            <thead>
 
-      <th>Estimate</th>
+                            <tr>
+                            <th className="text-success">Daily Expenses</th>
+                            <th>groceries</th>
+
+                            <th>eatingOut</th>
                             <th>Investment</th>
-                            <th>Gifts</th>
+                            <th>onlinePurchases</th>
                             <th>Total</th>
 
 
                             
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
+                                    </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
                             <th scope="row"></th>
 
-                            <td>{ this.state.income}</td>
-                            <td>{this.state.estimate}</td>
-                            <td>{this.state.investments}</td>
-                            <td>{this.state.gifts}</td>
-                            <td> = { this.props.final}</td>
+                            <td>{ this.state.groceries}</td>
+                            <td>{this.state.eatingOut}</td>
+                            <td>{this.state.transportation}</td>
+                            <td>{this.state.onlinePurchases}</td>
+                            <td> = </td>
 
 
     </tr>
@@ -188,6 +193,9 @@ import { InputGroup,InputGroupAddon,
                 
             </div>
                 </div>
+                </div>
+                </div>
+
                 
                
     );
@@ -198,4 +206,4 @@ import { InputGroup,InputGroupAddon,
     }
     
     export default GeneralInfo;
-    // export {Estimated};
+    // export {eatingOutd};

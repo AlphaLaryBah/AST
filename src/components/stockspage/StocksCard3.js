@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card,
   CardTitle, CardText } from 'reactstrap';
 
-const PersonCard3 = (props) => {
+const StocksCard3 = (props) => {
   return (
     <div>
       <Card body outline color="secondary">
@@ -35,4 +34,4 @@ const PersonCard3 = (props) => {
   );
 };
 
-export default PersonCard3;
+export default StocksCard3;
