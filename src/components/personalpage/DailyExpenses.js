@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { InputGroup,InputGroupAddon,
     Button, Form, FormGroup, Label, Input, Col,Table} from 'reactstrap';
-
+import ExpensesChart from "./ExpensesChart";
 
 
    
@@ -38,7 +38,11 @@ import { InputGroup,InputGroupAddon,
     
         handleSubmit(event) {
             const total = [];
-            let daily= this.props.finito;
+            let daily = this.props.finito;
+             // CREATE A PROP TO PASS AS STATE FOR THE CHART
+
+             let chartArr = this.props.chartArr;
+
 
         console.log('Current state is: ' + JSON.stringify(this.state));
             // alert('Current state is: ' + JSON.stringify(this.state));
@@ -57,11 +61,18 @@ import { InputGroup,InputGroupAddon,
          daily=dailyLiabilities.reduce(reducer)
             
          this.setState({daily})
+            //INPUT DATA ARRAY FRO THE CHART AND ITS STATE
+            chartArr = dailyLiabilities.map(chart => {
+                return chart
 
-         
-            
-        }
-       
+            });
+
+            this.setState({ chartArr})
+
+                    
+                        
+                    }
+                
         render() {
     return(
 
@@ -69,9 +80,13 @@ import { InputGroup,InputGroupAddon,
             <div className="col-12">
                 <hr />
                         <h2 className="text-center rounded bg-primary text-light">DAILY EXPENSES(Liabilities)</h2>
-                        <hr />
+                <hr />
+                <ExpensesChart data={this.state.chartArr} />
+
                     </div>
-                    <div className="col-md-10">
+            <div className="col-md-10 mt-4">
+            <hr />
+
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row className="mb-3">
                                 <Label htmlFor="groceries" md={3}>Groceries</Label>

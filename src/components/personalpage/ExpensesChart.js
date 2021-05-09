@@ -1,17 +1,18 @@
 import React from "react";
-import {Bar} from "react-chartjs-2"
+import {Pie} from "react-chartjs-2"
+
 
 export default function Chart(props) {
     return (
-        <div>
-            <Bar
+        <div className="bg-dark rounded p-2 " style={{height:350}}>
+            <Pie 
                 data={{
                     // at the bottom
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['Croceries', 'Eating Out', 'Transportation', 'Online Purchases'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [props.data1]
-            ,
+                        label: props.titel,
+                        data: props.data,
+            
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -32,9 +33,9 @@ export default function Chart(props) {
         }]
         
     }}
-	width={400}
-	height={600}
-	options={{ maintainAspectRatio: false }}
+	width={100}
+	height={100}
+	options={{ maintainAspectRatio: false}}
 />
         </div>
     );

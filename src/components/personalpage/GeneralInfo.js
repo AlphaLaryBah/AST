@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { InputGroup,InputGroupAddon,
     Button, Form, FormGroup, Label, Input, Col,Table} from 'reactstrap';
-import Chart from "../Chart"
+import ChartGenearal from "./ChartGenearal"
+
+
 
     class GeneralInfo extends Component {
     constructor(props) {
@@ -37,8 +39,12 @@ import Chart from "../Chart"
             const total = [];
             // CREATE A PROP TO PASS AS STATE FOR THE TABLE
             let finito = this.props.finito;
+                        // CREATE A PROP TO PASS AS STATE FOR THE CHART
 
-        console.log('Current state is: ' + JSON.stringify(this.state));
+            let chartArr = this.props.chartArr;
+
+ 
+        // console.log('Current state is: ' + JSON.stringify(this.state));
             // alert('Current state is: ' + JSON.stringify(this.state));
 
             // PREVENT REFRESH DEFAULT ON SUBMIT
@@ -51,28 +57,39 @@ import Chart from "../Chart"
             total.push(this.state.investments);
             total.push(this.state.debts);
 
+
+
             // TURNING ARRAY OBJECT TOTAL INTO NUMBE
             const estimatedIncome = total.map((i) => Number(i));
+            
+
+            // EXTRACT DEBTS INPUT TURN TO NUMBER TO SUBSTRACT FROM TOTAL
+            let debt = Number(this.state.debts);
+
 
             // ADD UP TOTAL 
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-            finito= estimatedIncome.reduce(reducer)
+            finito = estimatedIncome.reduce(reducer)-(debt)*2;
+            
         //    SET STATE FOR FINITO SO THAT I CAN CALL IT IN THE TABLE RENDER
-            this.setState({finito})
-           
+            this.setState({ finito })
 
+
+            //INPUT DATA ARRAY FRO THE CHART AND ITS STATE
+            chartArr = estimatedIncome.map(chart => {
+                return chart
+
+            });
+            
+            this.setState({ chartArr})
         }
 
         render() {
             return (<div>
 
-                <Chart  data1={ this.state.income }
-                
-                   />
+                <ChartGenearal data={this.state.chartArr}/>
     
-                 
-
                 <div className="row row-content">
             <div className="col-12">
                 <hr />

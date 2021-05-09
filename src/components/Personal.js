@@ -14,7 +14,7 @@ import "./personal.css";
 function Personal() {
   return (
 
-    <div className="personalBg">
+    <div className=" bg-dark">
       <div className="row" style={{ marginTop: 53 }}>
         <div className="col bg-dark">
         <Breadcrumb>

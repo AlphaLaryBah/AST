@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody, CardLink,
+  Card, CardText, CardBody,
   CardTitle, CardSubtitle
 } from 'reactstrap';
 
@@ -10,10 +10,12 @@ const PersonCard2 = (props) => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Card title</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
+          <CardTitle tag="h5" className="text-center">GENERAL INFORMATION CHARTS</CardTitle>
+          <hr/>
+          <CardSubtitle tag="h6" className="mb-2 text-muted text-center">Know Your Money</CardSubtitle>
+          <hr/>
+
         </CardBody>
-        {/* <img width="100%" src="https://components.smartsparrow.com/uploads/widget-carousel/pie-chart1.png" alt="charts" /> */}
         <CardBody>
           {props.generalInfo}
           {props.personalNavs}
