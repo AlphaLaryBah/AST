@@ -7,8 +7,7 @@ function Footer(props) {
     <footer>
       <div className="container">
         <div className="row">
-          <div className="col-4 col-sm-2 offset-1">
-            <h5>Links</h5>
+          <div className="col-sm-6">
             <ul className="list-unstyled">
               <li>
                 <Link
@@ -39,9 +38,9 @@ function Footer(props) {
               </li>
             </ul>
           </div>
-          <div className="col-6 col-sm-3 text-center">
-            <h5>Social</h5>
-            <a
+          {/* <div className="col-6 col-sm-3 text-center">
+            <h5>Social</h5> */}
+            {/* <a
               className="btn btn-social-icon btn-instagram"
               href="http://instagram.com/"
             >
@@ -68,8 +67,8 @@ function Footer(props) {
           </div>
           <div className="col-sm-4 text-center">
             <a
-              role="button"
-              className="btn btn-link text-dark"
+              role="button" */}
+              {/* className="btn btn-link text-dark"
               href="tel:+12065551234"
               style={{ textDecoration: "none" }}
             >
@@ -84,9 +83,9 @@ function Footer(props) {
             >
               <i className="fa fa-envelope-o" /> A$'t@gmail.co
             </a>
-          </div>
+          {/* </div> */}
         </div>
-      </div>
+      </div> 
     </footer>
   );
 }

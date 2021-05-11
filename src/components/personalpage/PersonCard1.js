@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText,Badge } from 'reactstrap';
-import GeneralInfo from "./GeneralInfo";
 
 
 class PersonCard1 extends Component {
