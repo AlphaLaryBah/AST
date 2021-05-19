@@ -1,9 +1,9 @@
 import React from "react";
 import { Input} from 'reactstrap';
 const StockSearch = (props) => {
-    return (<div>
+    return (<div className="">
                 <Input  type="search"
-            className="search"
+            className="search "
             placeholder={props.placeholder }
             onChange={props.handleChange}
             

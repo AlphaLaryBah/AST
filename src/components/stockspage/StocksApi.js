@@ -1,10 +1,9 @@
 import React from "react";
-import { InputGroup, Form, FormGroup, Label, Col,Card, CardText, CardBody, CardLink,
-    CardTitle, CardSubtitle,Button} from 'reactstrap';
+import { InputGroup, Form, FormGroup, Col,Card, CardText, CardBody,
+    CardTitle, Badge,Button,Label} from 'reactstrap';
 import Plot from 'react-plotly.js';
 import StockSearch from "./StockSearch";
 import { BsSearch} from "react-icons/bs";
-import {Pie} from "react-chartjs-2"
 
 
 
@@ -44,35 +43,35 @@ class StocksApi extends React.Component {
         // console.log(pointerToThis)
         const API_KEY = process.env.REACT_APP_API_KEY;
         let StockSymbol =query ;
-        let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
+        let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
         let stockChartXValueFuction = [];
         let stockChartYValueFuction = [];
 
         
 
-        // fetch(API_Call)
+        fetch(API_Call)
 
-        //     .then(
-        //         function (response) {
-        //             return response.json();
-        //         }
-        //     )
-        //     .then(
-        //         function (data) {
-        //             console.log(data);
-        //             for (var key in data['Time Series (Daily)']) {
-        //                 stockChartXValueFuction.push(key);
-        //                 stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
+            .then(
+                function (response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function (data) {
+                    console.log(data);
+                    for (var key in data['Time Series (Daily)']) {
+                        stockChartXValueFuction.push(key);
+                        stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
 
-        //             }
-        //             // console.log(stockChartXValueFuction)
-        //             pointerToThis.setState({
-        //                 stockChartXValue : stockChartXValueFuction,
-        //                 stockChartYValue : stockChartYValueFuction
+                    }
+                    // console.log(stockChartXValueFuction)
+                    pointerToThis.setState({
+                        stockChartXValue : stockChartXValueFuction,
+                        stockChartYValue : stockChartYValueFuction
     
-        //             });
-        //         }
-        //     )
+                    });
+                }
+            )
 
 
            
@@ -88,22 +87,26 @@ class StocksApi extends React.Component {
                   <CardBody>
                         <CardTitle tag="h5"></CardTitle>
                         <Form onSubmit={e => { e.preventDefault() }}>
-                            <FormGroup row className="mb-3">
-                        <Label htmlFor="income" md={3}>Stock Symbol: {this.state.searchField}</Label>
+                    <FormGroup row className=" d-flex justify-content-center   ">
+
+                        <Button className="bg-dark" >
+        Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.searchField}</Badge>
+      </Button>
                         <hr />
                         
                                 <Col md={6}>
-                                    
-                                    <InputGroup>
-                                    <FormGroup>
+                                <Label htmlFor="" >Searh By Stock Symbol</Label>
 
-                            <StockSearch
-                                    placeholder="Enter Stock Name"
+                                    <InputGroup>
+                                    <FormGroup className="">
+
+                                    <StockSearch
+                                    placeholder="Enter Stock Symbol"
                                     handleChange={(e) => this.setState({ searchField: e.target.value })}/> 
                           
                             </FormGroup>
                          
-                                        <Button className="" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                        <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
 
 
                         </InputGroup>
@@ -111,14 +114,14 @@ class StocksApi extends React.Component {
                                 </Col>
                             </FormGroup>
                            </Form>
+                           <hr />
 
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-6">
+            <div className="container overflow-auto  clearfix">
+                <div className="row ">
+                    <div className="col-sm-6 ">
                          
                            
-                            <Plot className=""
+                            <Plot className=" mr-5"
                              
                                 data={[
                                     {
@@ -130,11 +133,10 @@ class StocksApi extends React.Component {
                                     },
                                    
                                     
-                                    //   {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
                                 ]}
            
     
-                                layout={{width: 600, height: 400, title: 'Daily Stock Prices'}}
+                                layout={{ title: 'Daily Adjusted Stock Prices'}}
 
   
 
@@ -151,9 +153,8 @@ class StocksApi extends React.Component {
             </CardBody>
 
         <CardBody>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink>
+          <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
+        
         </CardBody>
       </Card>
                
