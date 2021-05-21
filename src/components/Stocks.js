@@ -12,7 +12,7 @@ import "./Stocks.css";
 
 function Stocks() {
   return (
-    <div className="bg-dark ">
+    <div className=" ">
       <div className="row" style={{ marginTop: 53 }}>
         <div className="col bg-dark">
           <Breadcrumb>

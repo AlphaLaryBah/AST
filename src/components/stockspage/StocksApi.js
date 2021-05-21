@@ -49,29 +49,29 @@ class StocksApi extends React.Component {
 
         
 
-        fetch(API_Call)
+        // fetch(API_Call)
 
-            .then(
-                function (response) {
-                    return response.json();
-                }
-            )
-            .then(
-                function (data) {
-                    console.log(data);
-                    for (var key in data['Time Series (Daily)']) {
-                        stockChartXValueFuction.push(key);
-                        stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
+        //     .then(
+        //         function (response) {
+        //             return response.json();
+        //         }
+        //     )
+        //     .then(
+        //         function (data) {
+        //             console.log(data);
+        //             for (var key in data['Time Series (Daily)']) {
+        //                 stockChartXValueFuction.push(key);
+        //                 stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
 
-                    }
-                    // console.log(stockChartXValueFuction)
-                    pointerToThis.setState({
-                        stockChartXValue : stockChartXValueFuction,
-                        stockChartYValue : stockChartYValueFuction
+        //             }
+        //             // console.log(stockChartXValueFuction)
+        //             pointerToThis.setState({
+        //                 stockChartXValue : stockChartXValueFuction,
+        //                 stockChartYValue : stockChartYValueFuction
     
-                    });
-                }
-            )
+        //             });
+        //         }
+        //     )
 
 
            

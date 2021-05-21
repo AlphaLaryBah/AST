@@ -10,10 +10,10 @@ const PersonCard2 = (props) => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle tag="h5" className="text-center">GENERAL INFORMATION CHARTS</CardTitle>
+          <CardTitle tag="h5" className="text-center">GENERAL INFORMATION and CHARTS</CardTitle>
           <hr/>
           <CardSubtitle tag="h6" className="mb-2 text-muted text-center">Know Your Money</CardSubtitle>
-          <hr/>
+          {/* <hr/> */}
 
         </CardBody>
         <CardBody>

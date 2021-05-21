@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 
-import PersonCard1 from "./personalpage/PersonCard1";
+// import PersonCard1 from "./personalpage/PersonCard1";
 import PersonCard2 from "./personalpage/PersonCard2";
-import PersonCard3 from "./personalpage/PersonCard3";
+// import PersonCard3 from "./personalpage/PersonCard3";
 import GeneralInfo from "./personalpage/GeneralInfo";
 import PersNavs from "./personalpage/PersNavs"
 import "./personal.css";
@@ -33,12 +33,12 @@ function Personal() {
 
     <div className="container-fluid" style={{ marginTop: 10 }}>
       <div className="row">
-      <div className="col-sm-6 col-md-4 col-lg-2">
+      {/* <div className="col-sm-6 col-md-4 col-lg-2"> */}
       
-<PersonCard1 />
-        </div>
+{/* <PersonCard1 /> */}
+        {/* </div> */}
 
-        <div className="col-sm-12 col-md-7 col-lg-8">
+        <div className="">
             <PersonCard2
               generalInfo={<GeneralInfo />
               }
@@ -50,8 +50,8 @@ function Personal() {
               
           
         </div>
-        <div className="col-sm-6 col-md-4 col-lg-2">
-<PersonCard3 />
+        <div className="">
+{/* <PersonCard3 /> */}
           
         </div>
 

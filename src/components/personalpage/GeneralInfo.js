@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { InputGroup,InputGroupAddon,
     Button, Form, FormGroup, Label, Input, Col,Table} from 'reactstrap';
 import ChartGenearal from "./ChartGenearal"
+import PersonCard1 from "./PersonCard1";
+import PersonCard3 from "./PersonCard3";
 
 
 
@@ -86,17 +88,29 @@ import ChartGenearal from "./ChartGenearal"
         }
 
         render() {
-            return (<div>
+            return (<div className="comtainer-fluid ">
+                <div className="row">
+                    <div className="col-sm-6 col-md-4 col-lg-2">
+                        <PersonCard1
+                            income={this.state.income}
+                    />
 
-                <ChartGenearal data={this.state.chartArr}/>
-    
-                <div className="row row-content">
-            <div className="col-12">
-                <hr />
-                        <h2 className="text-center">GENERAL INFORMATION</h2>
-                        <hr />
                     </div>
-                    <div className="col-md-10">
+
+                    <div className="col-sm-6 col-md-7 col-lg-8">
+                    <ChartGenearal data={this.state.chartArr}/>
+
+                    </div>
+                    <div className="col-sm-6 col-md-4 col-lg-2">
+                    <PersonCard3 />
+
+                    </div>
+
+                    <div className="col-sm-6 col-md-5 col-lg-5">
+                    <hr />
+                <h2 className="text-center">ASSETS AND LIABILITIES</h2>
+                     <hr />
+                    
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row className="mb-3">
                                 <Label htmlFor="income" md={3}>Your Income</Label>
@@ -166,65 +180,87 @@ import ChartGenearal from "./ChartGenearal"
                                     </Button>
                                 </Col>
                             </FormGroup>
-                </Form>
-                <hr/>
+                   </Form>
+                    <hr/>
+
+                    {/* </div>
+                    <div className="col-sm-6 col-md-4 col-lg-2"> */}
+                    <div className="mt-3 mb-3 bg-dark p-3 ">
+                  <Table hover className="bg-light mt-2 rounded p-3">
+  
+                            <thead>
+                                <tr>
+                                    <th className="text-success text-center">ASSETS AND LIABILITIES</th>
+                                    </tr>
+                                    <tr>
+                                    <th>Income</th>
+                                    <td>{this.state.income}</td>
+                                </tr>
+                            <tr>
+                                    <th>Estimate</th>
+                                    <td>{this.state.estimate}</td>
+                              </tr>    
+                                <tr>
+                                   <th>Investment</th>
+                                    <td>{this.state.investments}</td>                                   
+                                </tr>                                  
+                                <tr>
+                                    <th>debts</th>
+                                    <td>{this.state.debts}</td>
+                                    </tr>
+                                <tr>
+                                  <th>Total</th>
+                                    <td> =     {this.state.finito}</td>                                         
+                                </tr>
+                            </thead>                               
+                      </Table>                  
+                    </div>
+
+                    </div>
+                    
+
+
+                </div>
+                </div>
+
+
+    
+                /* <div className="row row-content">
+            <div className="col-12">
+                
             </div>
             <div className="mt-3 mb-3 bg-dark p-3 ">
                   <Table hover className="bg-light mt-2 rounded p-3">
   
                             <thead>
-    
                                 <tr>
                                     <th className="text-success text-center">General Information</th>
                                     </tr>
                                     <tr>
-
                                     <th>Income</th>
                                     <td>{this.state.income}</td>
-
-                            
                                 </tr>
                             <tr>
-
                                     <th>Estimate</th>
                                     <td>{this.state.estimate}</td>
-
-                                    
-                                </tr>
-                                   
+                              </tr>    
                                 <tr>
-
-                                    <th>Investment</th>
-                                    <td>{this.state.investments}</td>
-
-                                    
-                                </tr>
-                                   
+                                   <th>Investment</th>
+                                    <td>{this.state.investments}</td>                                   
+                                </tr>                                  
                                 <tr>
-
                                     <th>debts</th>
                                     <td>{this.state.debts}</td>
-
                                     </tr>
-
                                 <tr>
-
-                                    <th>Total</th>
-                                    <td> =     {this.state.finito}</td>
-                                           
+                                  <th>Total</th>
+                                    <td> =     {this.state.finito}</td>                                         
                                 </tr>
-                                       
-                            </thead>
-                                        
-                      </Table>
-
-                                            
-                    
+                            </thead>                               
+                      </Table>                  
                     </div>
-
-            </div>
-                
-            </div>
+            </div>      
+            </div> */
 
     );
     

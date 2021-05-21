@@ -1,30 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardTitle, CardText,Badge } from 'reactstrap';
 
 
-class PersonCard1 extends Component {
-//   constructor(props) {
-//     super(props);
+export default function PersonCard1(props){
 
-//     this.state = {
-//       genral: {GeneralInfo }
-
-//     };
-//   this.startState = this.startState.bind(this);
-
-  
-// }
-//   startState = () => {
-//   this.setState(this.state.general.income );
-//   }
-  
-  render() {
-    return (
-      <div>
+    return (<div>
         <Card body outline color="secondary">
           <CardTitle tag="h5" className="text-center text-success">ASSETS/YEAR</CardTitle>
           <CardText className="text-left">
-            <p>Income <Badge color="info" className="text-info bg-dark">info</Badge></p>
+          <p>Income <Badge color="info" className="text-info bg-dark">{props.income }</Badge></p>
             <p> Estimated <Badge color="info" className="text-info bg-dark">Info</Badge></p>
             <p>Investments  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
 
@@ -66,6 +50,5 @@ class PersonCard1 extends Component {
         </Card>
       </div>
     );
-  };
+  
 }
-export default PersonCard1;

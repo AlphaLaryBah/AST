@@ -7,12 +7,12 @@ import { Card, Badge,
 const PersonCard3 = (props) => {
   return (
     <div>
-      <Card body outline color="secondary" style={{ height:"800px"}}>
+      <Card body outline color="secondary" >
         <CardTitle tag="h5" className="text-center  text-success">NET INCOME</CardTitle>
         <CardText>
           <p>Net  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
           <p>Estimated  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
-          <div className=""  style={{ marginTop:"400px"}}>
+          <div className=""  style={{ marginTop:"550px"}}>
           <PopOverCalc  />
 
          </div>
