@@ -4,50 +4,27 @@ import { Card, CardTitle, CardText,Badge } from 'reactstrap';
 
 export default function PersonCard1(props){
 
-    return (<div>
+    return (<div className="mb-2">
         <Card body outline color="secondary">
           <CardTitle tag="h5" className="text-center text-success">ASSETS/YEAR</CardTitle>
           <CardText className="text-left">
-          <p>Income <Badge color="info" className="text-info bg-dark">{props.income }</Badge></p>
-            <p> Estimated <Badge color="info" className="text-info bg-dark">Info</Badge></p>
-            <p>Investments  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
+          <p>Income <Badge color="info" className="text-info bg-dark">$ {props.income }</Badge></p>
+            <p> Estimated <Badge color="info" className="text-info bg-dark">$ {props.estimated }</Badge></p>
+            <p>Investments  <Badge color="info" className="text-info bg-dark">$ {props.investments}</Badge></p>
 
-            <p>Assets Value  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
 
 
           </CardText>
         </Card>
         <Card body outline color="primary">
           <CardTitle tag="h5" className="text-center text-success">LIABILITIES</CardTitle>
-          <p>Debts  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
+          <p>Debts  <Badge color="" className="text-danger h-3">$ {props.debts }</Badge></p>
         
 
           <CardText>
           </CardText>
         </Card>
-        {/* <Card body outline color="success" className="">
-        <CardTitle tag="h5"></CardTitle>
-        <CardText>
-          
-          <PopOverCalc />
-
-        </CardText>
-      </Card> */}
-        <Card body outline color="info">
-          <CardTitle tag="h5" className="text-center text-success">DAILY EXPENSES</CardTitle>
-          <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
-          </CardText>
-        </Card>
-        <Card body outline color="warning">
-          <CardTitle tag="h5" className="text-center text-success">WEEKLY EXPENSES</CardTitle>
-          <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
-          </CardText>
-        </Card>
-        <Card body outline color="danger">
-          <CardTitle tag="h5" className="text-center text-success">MONTHLY EXPENSES</CardTitle>
-          <CardText>          <p>Liabilities  <Badge color="info" className="text-info bg-dark">Info</Badge></p>
-          </CardText>
-        </Card>
+       
       </div>
     );
   

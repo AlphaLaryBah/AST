@@ -13,7 +13,6 @@ const PersonCard2 = (props) => {
           <CardTitle tag="h5" className="text-center">GENERAL INFORMATION and CHARTS</CardTitle>
           <hr/>
           <CardSubtitle tag="h6" className="mb-2 text-muted text-center">Know Your Money</CardSubtitle>
-          {/* <hr/> */}
 
         </CardBody>
         <CardBody>

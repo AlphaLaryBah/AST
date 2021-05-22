@@ -93,6 +93,11 @@ import PersonCard3 from "./PersonCard3";
                     <div className="col-sm-6 col-md-4 col-lg-2">
                         <PersonCard1
                             income={this.state.income}
+                            estimated={this.state.estimate}
+                            investments={this.state.investments}
+                            value={this.state.finito}
+                            debts={this.state.debts}
+
                     />
 
                     </div>
@@ -102,19 +107,23 @@ import PersonCard3 from "./PersonCard3";
 
                     </div>
                     <div className="col-sm-6 col-md-4 col-lg-2">
-                    <PersonCard3 />
+                        <PersonCard3
+                        netIncome={this.state.finito}
+
+                    />
 
                     </div>
 
-                    <div className="col-sm-6 col-md-5 col-lg-5">
+                    <div className=" col-sm-6 col-md-12 col-lg-12 ">
                     <hr />
-                <h2 className="text-center">ASSETS AND LIABILITIES</h2>
-                     <hr />
                     
-                        <Form onSubmit={this.handleSubmit}>
-                            <FormGroup row className="mb-3">
+                        <Form onSubmit={this.handleSubmit} className="">
+                        <h2 className="text-center">ASSETS and LIABILITIES</h2>
+                        <hr />
+
+                            <FormGroup row className="mb-3 ">
                                 <Label htmlFor="income" md={3}>Your Income</Label>
-                                <Col md={9}>
+                                <Col >
                                     
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
@@ -124,14 +133,14 @@ import PersonCard3 from "./PersonCard3";
                                         value={this.state.income}
                                         onChange={this.handleInputChange}
                                 />
-                                <InputGroupAddon addonType="append">.00</InputGroupAddon>
+                                        <InputGroupAddon addonType="append">.00</InputGroupAddon>
                             </InputGroup>
                                 
                                 </Col>
                             </FormGroup>
                             <FormGroup row className="mb-3">
                                 <Label htmlFor="estimate" md={3}>Estimated Income</Label>
-                                <Col md={9}>
+                                <Col >
                                 <InputGroup>
                                 <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1} type="number" step="1"
@@ -146,7 +155,7 @@ import PersonCard3 from "./PersonCard3";
                                 </FormGroup>
                                 <FormGroup row className="mb-3">
                                 <Label htmlFor="investments" md={3}>Investments</Label>
-                                <Col md={9}>
+                                <Col >
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
@@ -160,7 +169,7 @@ import PersonCard3 from "./PersonCard3";
                             </FormGroup>
                             <FormGroup row className="mb-3">
                                 <Label htmlFor="debts" md={3}>Debts</Label>
-                                <Col md={9}>
+                                <Col >
                                 <InputGroup>
                             <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                 <Input  min={1}  type="number" step="1"
@@ -173,9 +182,9 @@ import PersonCard3 from "./PersonCard3";
                                 </Col>
                             </FormGroup>
                             
-                          <FormGroup row className="mt-3">
+                          <FormGroup row className="mt-3 ">
                                 <Col md={{size: 10, offset: 2}}>
-                                    <Button type="submit" color="success">
+                                    <Button type="submit" color="success" className=''>
                                         Submit
                                     </Button>
                                 </Col>
@@ -183,14 +192,14 @@ import PersonCard3 from "./PersonCard3";
                    </Form>
                     <hr/>
 
-                    {/* </div>
-                    <div className="col-sm-6 col-md-4 col-lg-2"> */}
-                    <div className="mt-3 mb-3 bg-dark p-3 ">
+                     </div> 
+                    <div className="w-60  "> 
+                    <div className="mt-3 mb-3 bg-dark p-3  ">
                   <Table hover className="bg-light mt-2 rounded p-3">
   
                             <thead>
                                 <tr>
-                                    <th className="text-success text-center">ASSETS AND LIABILITIES</th>
+                                    <th className="text-success text-center">ASSETS and LIABILITIES</th>
                                     </tr>
                                     <tr>
                                     <th>Income</th>
@@ -222,45 +231,11 @@ import PersonCard3 from "./PersonCard3";
 
                 </div>
                 </div>
+                // </div>
 
 
-    
-                /* <div className="row row-content">
-            <div className="col-12">
-                
-            </div>
-            <div className="mt-3 mb-3 bg-dark p-3 ">
-                  <Table hover className="bg-light mt-2 rounded p-3">
-  
-                            <thead>
-                                <tr>
-                                    <th className="text-success text-center">General Information</th>
-                                    </tr>
-                                    <tr>
-                                    <th>Income</th>
-                                    <td>{this.state.income}</td>
-                                </tr>
-                            <tr>
-                                    <th>Estimate</th>
-                                    <td>{this.state.estimate}</td>
-                              </tr>    
-                                <tr>
-                                   <th>Investment</th>
-                                    <td>{this.state.investments}</td>                                   
-                                </tr>                                  
-                                <tr>
-                                    <th>debts</th>
-                                    <td>{this.state.debts}</td>
-                                    </tr>
-                                <tr>
-                                  <th>Total</th>
-                                    <td> =     {this.state.finito}</td>                                         
-                                </tr>
-                            </thead>                               
-                      </Table>                  
-                    </div>
-            </div>      
-            </div> */
+
+
 
     );
     
