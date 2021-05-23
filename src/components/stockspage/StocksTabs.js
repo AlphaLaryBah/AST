@@ -6,17 +6,19 @@ import Tabs from "react-bootstrap/Tabs";
 import StocksNavs from "./StocksNavs";
 import StocksTable from "./StocksTable";
 
+
 import "./StocksTabs.css";
 
 export default function StocksTabs() {
-  
+
   return (
-    <div className="ml-3 mr-3 text-dark mt-2">
+
+    <div className="ml-3 mr-3 text-dark mt-2 mb-5">
       <h1 className="text-dark text-center"> VALUE INNVESTING RULES</h1>
       <hr />
 
       <Tabs fill defaultActiveKey="profile" id="">
-        <Tab eventKey="leadership" title="BUFFET RULES">
+        <Tab eventKey="leadership" title="BUFFET RULES" className="">
           <hr />
 
           <StocksNavs
@@ -346,7 +348,7 @@ export default function StocksTabs() {
         </Tab>
         {/* <Tab eventKey="stability" title="">
           {/* <StocksNavs navTittle="STABILITY" /> */}
-        {/* </Tab> */} 
+        {/* </Tab> */}
         {/* <Tab eventKey="Longterm" title="LONG-TERM PROSPECT">
           <StocksNavs navTittle="LONG-TERM PROSPECT" />
         </Tab> */}
@@ -525,5 +527,6 @@ export default function StocksTabs() {
         </Tab>
       </Tabs>
     </div>
+
   );
 }

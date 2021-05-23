@@ -1,19 +1,15 @@
 import React from "react";
-import { InputGroup, Form, FormGroup, Col,Card, CardText, CardBody,
-    CardTitle, Badge,Button,Label} from 'reactstrap';
+import {
+    InputGroup, Form, FormGroup, Col, Card, CardText, CardBody,
+    CardTitle, Badge, Button, Label
+} from 'reactstrap';
 import Plot from 'react-plotly.js';
 import StockSearch from "./StockSearch";
-import { BsSearch} from "react-icons/bs";
-
-
-
-
-
-
+import { BsSearch } from "react-icons/bs";
 
 
 class StocksApi extends React.Component {
-   
+
     constructor(props) {
         super(props);
 
@@ -24,11 +20,11 @@ class StocksApi extends React.Component {
         };
 
     }
-    
-    
+
+
     handleSearch = () => {
-         this.fetchStocks(this.state.searchField)
-    
+        this.fetchStocks(this.state.searchField)
+
     };
     componentDidMount() {
         this.fetchStocks();
@@ -42,12 +38,12 @@ class StocksApi extends React.Component {
         const pointerToThis = this;
         // console.log(pointerToThis)
         const API_KEY = process.env.REACT_APP_API_KEY;
-        let StockSymbol =query ;
+        let StockSymbol = query;
         let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
         let stockChartXValueFuction = [];
         let stockChartYValueFuction = [];
 
-        
+
 
         // fetch(API_Call)
 
@@ -68,99 +64,92 @@ class StocksApi extends React.Component {
         //             pointerToThis.setState({
         //                 stockChartXValue : stockChartXValueFuction,
         //                 stockChartYValue : stockChartYValueFuction
-    
+
         //             });
         //         }
         //     )
 
-
-           
-
-
-     }
+    }
     render() {
-       
-        
-
-    return(<div className="">
+        return (<div className="">
             <Card>
-                  <CardBody>
-                        <CardTitle tag="h5"></CardTitle>
-                        <Form onSubmit={e => { e.preventDefault() }}>
-                    <FormGroup row className=" d-flex justify-content-center   ">
+                <CardBody>
+                    <CardTitle tag="h5"></CardTitle>
+                    <Form onSubmit={e => { e.preventDefault() }}>
+                        <FormGroup row className=" d-flex justify-content-center   ">
 
-                        <Button className="bg-dark" >
-        Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.searchField}</Badge>
-      </Button>
-                        <hr />
-                        
-                                <Col md={6}>
+                            <Button className="bg-dark" >
+                                Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.searchField}</Badge>
+                            </Button>
+                            <hr />
+
+                            <Col md={6}>
                                 <Label htmlFor="" >Searh By Stock Symbol</Label>
 
-                                    <InputGroup>
+                                <InputGroup>
                                     <FormGroup className="">
 
-                                    <StockSearch
-                                    placeholder="Enter Stock Symbol"
-                                    handleChange={(e) => this.setState({ searchField: e.target.value })}/> 
-                          
-                            </FormGroup>
-                         
-                                        <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                        <StockSearch
+                                            placeholder="Enter Stock Symbol"
+                                            handleChange={(e) => this.setState({ searchField: e.target.value })} />
+
+                                    </FormGroup>
+
+                                    <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
 
 
-                        </InputGroup>
+                                </InputGroup>
 
-                                </Col>
-                            </FormGroup>
-                           </Form>
-                           <hr />
+                            </Col>
+                        </FormGroup>
+                    </Form>
+                    <hr />
 
-            <div className="container overflow-auto  clearfix">
-                <div className="row ">
-                    <div className="col-sm-6 ">
-                         
-                           
-                            <Plot className=" mr-5"
-                             
-                                data={[
-                                    {
-                                        x: this.state.stockChartXValue,
-                                        y: this.state.stockChartYValue,
-                                        type: 'scatter',
-                                        mode: 'lines+markers',
-                                        marker: { color: 'red' },
-                                    },
-                                   
-                                    
-                                ]}
-           
-    
-                                layout={{ title: 'Daily Adjusted Stock Prices'}}
-
-  
-
-           
-            />
-                        
-                </div>
-
-            </div>
+                    <div className="container overflow-auto  clearfix">
+                        <div className="row ">
+                            <div className="col-sm-6 ">
 
 
-                
-            </div>
-            </CardBody>
+                                <Plot className=" mr-5"
 
-        <CardBody>
-          <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
-        
-        </CardBody>
-      </Card>
-               
+                                    data={[
+                                        {
+                                            x: this.state.stockChartXValue,
+                                            y: this.state.stockChartYValue,
+                                            type: 'scatter',
+                                            mode: 'lines+markers',
+                                            marker: { color: 'red' },
+                                        },
 
-                </div>
-                
+
+                                    ]}
+
+
+                                    layout={{ title: 'Daily Adjusted Stock Prices' }}
+
+
+
+
+                                />
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </CardBody>
+
+                <CardBody>
+                    <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
+
+                </CardBody>
+            </Card>
+
+
+        </div>
+
 
 
         );
