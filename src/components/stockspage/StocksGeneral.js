@@ -18,8 +18,9 @@ class StocksGeneral extends Component {
         super(props);
         this.state = {
             anualIncome: "",
+            quarterNetIncome: "",
             eBit: "",
-            ebitDa: ""
+            company: ""
 
         };
 
@@ -38,6 +39,10 @@ class StocksGeneral extends Component {
         let API_Call = `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${StockSymbol}&apikey=${API_KEY}`
         // let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
         let income = [];
+        let earningb4Tax = [];
+        let stockName = [];
+        let quatrInc = [];
+
 
 
 
@@ -50,32 +55,37 @@ class StocksGeneral extends Component {
             .then(
                 function (data) {
                     income.push(data.annualReports[0].netIncome);
+                    earningb4Tax.push(data.annualReports[0].ebit);
+                    stockName.push(data.symbol);
+                    quatrInc.push(data.quarterlyReports[0].netIncome);
 
-                    console.log(data.annualReports[0].ebit);
-                    console.log(data.annualReports[0].netIncome);
-                    console.log(data.annualReports[0].ebitda);
+
+                    console.log();
+                    pointerToThis.setState({
+                        anualIncome: income,
+                        quarterNetIncome: quatrInc,
+                        eBit: earningb4Tax,
+                        company: stockName
+
+                    });
 
 
                 }
-                //           pointerToThis.setState({
-                //                 stockChartXValue: stockChartXValueFuction,
-                //                 stockChartYValue: stockChartYValueFuction
 
-                //             });
-                // }
             )
 
     }
 
 
     render() {
+        let curency = "$";
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-6 col-md-4 col-lg-2">
                         <StocksCard1
 
-                            cardTitle="KEY RATIOS"
+                            cardTitle={"KEY RATIOS of: " + this.state.company}
 
                             cardText={
                                 <StocksList
@@ -93,10 +103,7 @@ class StocksGeneral extends Component {
                                     list6="INTEREST RATES"
                                     badge6="1.60%"
                                 />
-                            }
-
-
-                        />
+                            } />
                     </div>
 
                     <div className="col-sm-6 col-md-7 col-lg-8">
@@ -108,7 +115,7 @@ class StocksGeneral extends Component {
                     <div className="col-sm-6 col-md-4 col-lg-2">
 
                         <StocksCard3
-                            cardTitle="KEY RATIOS"
+                            cardTitle={"KEY RATIOS of: " + this.state.company}
 
                             cardText={
                                 <StocksList
@@ -119,12 +126,12 @@ class StocksGeneral extends Component {
                                     badge2="1.50"
                                     list3="FCF:"
                                     badge3=">=10% Anual"
-                                    list4="Icome:"
-                                    badge4={this.state.anualIncome}
-                                // list5="P/BV:"
-                                // badge5="0"
-                                // list6="INTEREST RATES"
-                                // badge6="1.60%"
+                                    list4="Annual Net Income:"
+                                    badge4={curency + " " + parseFloat(this.state.anualIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                    list5="EBIT:"
+                                    badge5={curency + " " + parseFloat(this.state.eBit).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                    list6="Interim Quarter Net Income"
+                                    badge6={curency + " " + parseFloat(this.state.quarterNetIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                                 />
                             }
                         />
@@ -135,34 +142,33 @@ class StocksGeneral extends Component {
                 <div className="col">
 
                 </div>
-
+                <hr />
                 <h5 className="text-dark text-center"> Let's Do The Math</h5>
 
                 <Tab.Container
                     id="left-tabs-example"
                     defaultActiveKey="first"
-                    className=""
-                >
+                    className="">
                     <Row>
                         <Col sm={3}>
-                            <Nav variant="pills" className="flex-column ">
+                            <Nav variant="pills" className="flex-row ">
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="one" >CAGR</Nav.Link>
+                                    <Nav.Link eventKey="one" className="bg-dark text-light " >CAGR</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="two"> FV</Nav.Link>
+                                    <Nav.Link eventKey="two" className="bg-dark text-light  "> FV</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="three" >Anual Report</Nav.Link>
+                                    <Nav.Link eventKey="three" className="bg-dark text-light  " ></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="four" ></Nav.Link>
+                                    <Nav.Link eventKey="four" className="bg-dark text-light  " ></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="five" ></Nav.Link>
+                                    <Nav.Link eventKey="five" className="bg-dark text-light  " ></Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="six"></Nav.Link>
+                                    <Nav.Link eventKey="six" className="bg-dark text-light  "></Nav.Link>
                                 </Nav.Item>
                             </Nav>
                         </Col>
@@ -245,7 +251,6 @@ class StocksGeneral extends Component {
 
 
             </div>
-
 
         );
     }

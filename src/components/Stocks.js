@@ -15,43 +15,46 @@ function Stocks() {
               <Link className="text-light" to="/home">Home</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item className="text-light" active>
-            <Link className="text-light" to="/personal">Personal</Link>
-              </Breadcrumb.Item>
+              <Link className="text-light" to="/personal">Personal</Link>
+            </Breadcrumb.Item>
             <Breadcrumb.Item className="text-light" active>
-            <Link className="text-light" to="/stocks">Stocks</Link>
+              <Link className="text-light" to="/stocks">Stocks</Link>
 
-              </Breadcrumb.Item>
+            </Breadcrumb.Item>
 
           </Breadcrumb>
           <hr />
         </div>
       </div>
       <div className="container-fluid" style={{ marginTop: 10 }}>
-      <div className="row">
-      {/* <div className="col-sm-6 col-md-4 col-lg-2"> */}
-      
-           
-        {/* </div> */}
+        <div className="row">
+          {/* <div className="col-sm-6 col-md-4 col-lg-2"> */}
+
+
+          {/* </div> */}
 
           <div className="">
             <StocksGeneral />
 
-            
 
 
 
-          
+
+
+          </div>
+
+          <div className="">
+            <hr />
+
+            <StocksTabs />
+
+
+          </div>
+
+
         </div>
-        <div className="">
-        <StocksTabs />
-
-          
-        </div>
-
-
-        </div>
-        </div>
-        </div>
+      </div>
+    </div>
 
   );
 }
