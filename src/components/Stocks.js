@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import StocksTabs from "./stockspage/StocksTabs";
-import StocksGeneral from "./stockspage/StocksGeneral"
+import StocksGeneral from "./stockspage/StocksGeneral";
 import "./Stocks.css";
 
 function Stocks() {
@@ -35,11 +35,6 @@ function Stocks() {
 
           <div className="">
             <StocksGeneral />
-
-
-
-
-
 
           </div>
 

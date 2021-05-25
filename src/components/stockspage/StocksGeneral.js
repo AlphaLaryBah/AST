@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-    Col, Table
+    Col, Table, InputGroup, Form, FormGroup, Badge, Button, Label
 } from 'reactstrap';
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
@@ -11,6 +11,11 @@ import StocksCard3 from "./StocksCard3";
 import StocksList from "./StocksList";
 import FvCalc from "./FvCalc";
 import CagrCalc from "./CagrCalc";
+import CalcInput from "./CalcInput";
+import { BsSearch } from "react-icons/bs";
+import Rule72 from "./Rule72";
+import { Finance } from 'financejs';
+
 
 class StocksGeneral extends Component {
 
@@ -20,31 +25,62 @@ class StocksGeneral extends Component {
             anualIncome: "",
             quarterNetIncome: "",
             eBit: "",
-            company: ""
+            company: "",
+            search: 'IBM',
+            anualGrowth: {
+                year5: "",
+                year4: "",
+                year3: "",
+                year2: "",
+                year1: ""
+
+            },
+            balanceSheet: {
+                sharesOutStanding: "",
+                shareHoldersEquity: ""
+
+
+            }
 
         };
 
 
     }
+
+    handleSearch = () => {
+        this.fetchStocks(this.state.search)
+
+    };
     componentDidMount() {
         this.fetchStocks();
     }
 
 
     fetchStocks() {
+        let look = this.props.look;
+        look = this.state.search;
+
+
         const pointerToThis = this;
 
         const API_KEY = process.env.REACT_APP_API_KEY;
-        let StockSymbol = "IBM";
-        let API_Call = `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${StockSymbol}&apikey=${API_KEY}`
-        // let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
+        let StockSymbol = look;
+        let API_Call = `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${StockSymbol}&apikey=${API_KEY}`;
+        let API_CALL2 = `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${StockSymbol}&apikey=${API_KEY}`;
+
+        // STATES ARRAY
         let income = [];
         let earningb4Tax = [];
         let stockName = [];
         let quatrInc = [];
 
+        // YEARLY  INCOME ARRAY
 
-
+        let firstY = [];
+        let secondY = [];
+        let thirdY = [];
+        let fourthY = [];
+        let fithY = [];
 
         fetch(API_Call)
             .then(
@@ -54,31 +90,86 @@ class StocksGeneral extends Component {
             )
             .then(
                 function (data) {
+
                     income.push(data.annualReports[0].netIncome);
                     earningb4Tax.push(data.annualReports[0].ebit);
                     stockName.push(data.symbol);
                     quatrInc.push(data.quarterlyReports[0].netIncome);
 
+                    // YEARLY ANNual INCOME ARRAY from most current to old column
+                    firstY.push(data.annualReports[4].netIncome);
+                    secondY.push(data.annualReports[3].netIncome);
+                    thirdY.push(data.annualReports[2].netIncome);
+                    fourthY.push(data.annualReports[1].netIncome);
+                    fithY.push(data.annualReports[0].netIncome);
 
-                    console.log();
                     pointerToThis.setState({
                         anualIncome: income,
                         quarterNetIncome: quatrInc,
                         eBit: earningb4Tax,
-                        company: stockName
+                        company: stockName,
+
+                        // YEARLY  Net INCOME ARRAY
+                        anualGrowth: {
+                            year5: fithY,
+                            year4: fourthY,
+                            year3: thirdY,
+                            year2: secondY,
+                            year1: firstY
+                        }
 
                     });
-
-
                 }
+            )
 
+        let sharesOut = [];
+        let shareEquity = [];
+
+        fetch(API_CALL2)
+            .then(
+                function (response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function (data) {
+                    sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
+                    shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
+
+
+
+                    pointerToThis.setState({
+                        balanceSheet: {
+                            sharesOutStanding: sharesOut,
+                            shareHoldersEquity: shareEquity
+                        }
+
+
+
+                    });
+                }
             )
 
     }
 
 
+
     render() {
         let curency = "$";
+        // COMPOUND ANNUAL GROWTH RATE
+        let finance = new Finance();
+        // year 1 is five years ago
+        let y1 = finance.CAGR(this.state.anualGrowth.year4, this.state.anualGrowth.year5, 1);
+        let y2 = finance.CAGR(this.state.anualGrowth.year3, this.state.anualGrowth.year4, 1);
+        let y3 = finance.CAGR(this.state.anualGrowth.year2, this.state.anualGrowth.year3, 1);
+        let y4 = finance.CAGR(this.state.anualGrowth.year1, this.state.anualGrowth.year2, 1);
+        let fiveYears = finance.CAGR(this.state.anualGrowth.year1, this.state.anualGrowth.year5, 5);
+        // EPS  net income/sharesoutstanding
+        let ePs = (this.state.anualGrowth.year5) / (this.state.balanceSheet.sharesOutStanding);
+        let earningsPS = ePs.toFixed(2);
+        // BV shareholder equity/sharesoutstanding
+        let bookV = (this.state.balanceSheet.shareHoldersEquity) / (this.state.balanceSheet.sharesOutStanding);
+        let BV = bookV.toFixed(2);
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -89,19 +180,14 @@ class StocksGeneral extends Component {
 
                             cardText={
                                 <StocksList
-                                    list1="ROIC"
-                                    badge1=">=10% Anual"
-
+                                    list1="CAGR 5yrs:"
+                                    badge1={fiveYears + "%"}
                                     list2="EPS:"
-                                    badge2=">=10% Anual"
+                                    badge2={"$" + " " + earningsPS}
                                     list3="B/V:"
-                                    badge3=">=10% Anual"
-                                    list4="P/E:"
-                                    badge4="0"
-                                    list5="P/BV:"
-                                    badge5="0"
-                                    list6="INTEREST RATES"
-                                    badge6="1.60%"
+                                    badge3={"$" + " " + BV}
+                                    list4={this.state.company + "'s Shares"}
+                                    badge4={this.state.balanceSheet.sharesOutStanding}
                                 />
                             } />
                     </div>
@@ -119,117 +205,179 @@ class StocksGeneral extends Component {
 
                             cardText={
                                 <StocksList
-                                    list1="Det/Equity:"
-                                    badge1="0.50"
 
-                                    list2="Current:"
-                                    badge2="1.50"
-                                    list3="FCF:"
-                                    badge3=">=10% Anual"
-                                    list4="Annual Net Income:"
-                                    badge4={curency + " " + parseFloat(this.state.anualIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                    list5="EBIT:"
-                                    badge5={curency + " " + parseFloat(this.state.eBit).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                    list6="Interim Quarter Net Income"
-                                    badge6={curency + " " + parseFloat(this.state.quarterNetIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                    list1="Year's Net Income :"
+                                    badge1={curency + " " + parseFloat(this.state.anualIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                    list2="EBIT:"
+                                    badge2={curency + " " + parseFloat(this.state.eBit).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                    list3="Interim Quarter Net Income"
+                                    badge3={curency + " " + parseFloat(this.state.quarterNetIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                                 />
                             }
                         />
                     </div>
                 </div>
 
-
-                <div className="col">
-
-                </div>
                 <hr />
                 <h5 className="text-dark text-center"> Let's Do The Math</h5>
-
+                <h3 className="text-center">Know Your Stock</h3>
+                <Form onSubmit={e => { e.preventDefault() }}>
+                    <FormGroup row className=" d-flex justify-content-center   ">
+                        <Button className="bg-dark" >
+                            Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.search}</Badge>
+                        </Button>
+                        <hr />
+                        <Col md={6}>
+                            <Label htmlFor="">Searh By Stock Symbol</Label>
+                            <InputGroup>
+                                <FormGroup className="">
+                                    <CalcInput
+                                        placeholder="Enter Stock Symbol"
+                                        handleChange={(e) => this.setState({ search: e.target.value })} />
+                                </FormGroup>
+                                <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                            </InputGroup>
+                        </Col>
+                    </FormGroup>
+                </Form>
                 <Tab.Container
                     id="left-tabs-example"
                     defaultActiveKey="first"
                     className="">
                     <Row>
                         <Col sm={3}>
-                            <Nav variant="pills" className="flex-row ">
+                            <Nav variant="" className="flex-row ">
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="one" className="bg-dark text-light " >CAGR</Nav.Link>
+                                    <Nav.Link eventKey="one" className=" text-dark bg-warning " >CAGR</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link eventKey="two" className="bg-dark text-light  "> FV</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="three" className="bg-dark text-light  " ></Nav.Link>
+                                    <Nav.Link eventKey="three" className="bg-info text-dark  " >Rule 72</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="four" className="bg-dark text-light  " ></Nav.Link>
+                                    <Nav.Link eventKey="four" className="bg-dark text-light  "> Income Statement</Nav.Link>
                                 </Nav.Item>
+
                                 <Nav.Item className="">
-                                    <Nav.Link eventKey="five" className="bg-dark text-light  " ></Nav.Link>
+                                    <Nav.Link eventKey="five" className="bg-info text-dark  " >Balance Sheet</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="">
+                                {/* <Nav.Item className="">
                                     <Nav.Link eventKey="six" className="bg-dark text-light  "></Nav.Link>
-                                </Nav.Item>
+                                </Nav.Item> */}
                             </Nav>
                         </Col>
                         <Col sm={9}>
                             <Tab.Content>
                                 <Tab.Pane eventKey="one" className="text-dark">
+                                    <hr />
+
                                     <CagrCalc />
 
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="two" className="text-dark ">
+                                    <hr />
+
                                     <FvCalc />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="three" className="text-dark">
+                                    <hr />
+                                    <Rule72 />
+
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="four" className="text-dark">
+                                    <hr />
                                     <Table responsive>
                                         <thead>
                                             <tr>
-                                                <th>#</th>
-                                                <th>Table heading</th>
-                                                <th>Table heading</th>
-                                                <th>Table heading</th>
-                                                <th>Table heading</th>
-                                                <th>Table heading</th>
-                                                <th>Table heading</th>
+                                                <th>Company Name</th>
+                                                <th>Annual Net Income</th>
+                                                <th>Latest Quater Net Income</th>
+                                                <th>EBIT</th>
+
                                             </tr>
+
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
-                                                <td>Table cell</td>
+                                                <th scope="row" className="text-center text-success">{this.state.company}</th>
+                                                <td>{curency + " " + parseFloat(this.state.anualIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.quarterNetIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.eBit).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+
                                             </tr>
                                         </tbody>
                                     </Table>
+                                    <hr />
+                                    <h3 className="text-center text-danger"> <u>CAGR for {this.state.company}</u></h3>
+                                    <Table responsive>
+                                        <thead>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <th>Year One</th>
+                                                <th>Year Two</th>
+                                                <th>Year Three</th>
+                                                <th>Year Four </th>
+                                                <th>Current Year</th>
+                                                <th>Growth Rate 5yrs</th>
+                                            </tr>
 
-
-
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" className="text-center text-success">{this.state.company}</th>
+                                                <td>{0 + "%"}</td>
+                                                <td>{y1 + "%"}</td>
+                                                <td>{y2 + "%"}</td>
+                                                <td>{y3 + "%"}</td>
+                                                <td>{y4 + "%"}</td>
+                                                <td>{fiveYears + "%"}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5yrs Net Income</th>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year1).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year2).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year3).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year4).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year5).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                    <hr />
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="four" className="text-dark"></Tab.Pane>
-                                <Tab.Pane eventKey="five" className="text-dark"></Tab.Pane>
+                                <Tab.Pane eventKey="five" className="text-dark">
+                                    <hr />
+                                    <h3 className="text-center text-danger"> <u>Blance Sheet of: {this.state.company}</u></h3>
+
+                                    <Table responsive>
+                                        <thead>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <th>shares Out-Standing</th>
+                                                <th>share Holders' Equity</th>
+                                                {/* <th>Year Three</th>
+                                                <th>Year Four </th>
+                                                <th>Current Year</th>
+                                                <th>Growth Rate 5yrs</th> */}
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">{this.state.company}</th>
+
+                                                <td>{curency + " " + parseFloat(this.state.balanceSheet.sharesOutStanding).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.balanceSheet.shareHoldersEquity).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                {/* {/* <td>{curency + " " + parseFloat(this.state.anualGrowth.year3).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year4).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year5).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td> */}
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                    <hr />
+                                </Tab.Pane>
                                 <Tab.Pane eventKey="six" className="text-dark"></Tab.Pane>
                             </Tab.Content>
                         </Col>
