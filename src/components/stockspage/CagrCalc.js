@@ -47,19 +47,19 @@ class CagrCalc extends Component {
     }
 
     render() {
-        return (<div>
+        return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
 
-            <Card>
+            <Card className="shadow-lg p-3 mb-5 bg-white rounded">
                 <CardHeader className="text-center">CAGR: Coumpounded Annual Growth Rate</CardHeader>
-                <CardBody>
-                    <CardTitle className="text-center" tag="h5">Compound Annual Growth Rate (CAGR) is the year-over-year growth rate of an investment over a specified period of time</CardTitle>
+                <CardBody >
+                    <CardTitle className="text-center " tag="h5">Compound Annual Growth Rate (CAGR) is the year-over-year growth rate of an investment over a specified period of time</CardTitle>
 
                     <Form onSubmit={this.handleSubmit}>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className=" shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="Begining" md={3}>Beginning Value</Label>
                             <Col md={9}>
 
-                                <InputGroup>
+                                <InputGroup >
                                     <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                     <Input min={1} type="number" step="1"
                                         id="cagrtNum1" name="cagrNum1"
@@ -72,7 +72,7 @@ class CagrCalc extends Component {
 
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="ending" md={3}>Ending Value</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -87,7 +87,7 @@ class CagrCalc extends Component {
                                 </InputGroup>
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="Years" md={3}>Number of Periods</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -103,17 +103,17 @@ class CagrCalc extends Component {
                             </Col>
                         </FormGroup>
 
-                        <FormGroup row className="mt-3">
+                        <FormGroup row className="">
                             <Col md={{ size: 10, offset: 2 }}>
-                                <Button type="submit" color="success">
+                                <Button type="submit" color="success" className="shadow-lg p-3 mb-1 rounded">
                                     Calculate
-                                                              </Button>
+                              </Button>
                             </Col>
                         </FormGroup>
                     </Form>
 
                 </CardBody>
-                <CardFooter>CAGR =  {this.state.cagrReseults} % </CardFooter>
+                <CardFooter >CAGR =  {this.state.cagrReseults} % </CardFooter>
             </Card>
 
         </div>

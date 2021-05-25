@@ -46,17 +46,16 @@ console.log(this.state.rate)
 
     render() {
         return (
-            <Card>
+            <Card  className="shadow-lg p-3 mb-5 bg-white rounded">
                 <CardHeader className="text-center">FV: Future Value</CardHeader>
                 <CardBody>
                     <CardTitle className="text-center" tag="h5">Future Value (FV) is the value of an asset or cash at a specified date in the future that is equivalent in value to a specified sum today.</CardTitle>
 
                     <Form onSubmit={this.handleSubmit}>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row  className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="rate" md={3}>Rate</Label>
                             <Col md={9}>
-
-                                <InputGroup>
+                                <InputGroup >
                                     <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                                     <Input type="number" step="1"
                                         id="rate" name="rate"
@@ -69,7 +68,7 @@ console.log(this.state.rate)
 
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row  className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="cashFlow" md={3}>Cash Flow</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -84,7 +83,7 @@ console.log(this.state.rate)
                                 </InputGroup>
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row  className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="time" md={3}>Number of Periods</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -102,9 +101,9 @@ console.log(this.state.rate)
 
                         <FormGroup row className="mt-3">
                             <Col md={{ size: 10, offset: 2 }}>
-                                <Button type="submit" color="success">
+                                <Button type="submit" color="success"  className="shadow-lg p-3 mb-2 rounded">
                                     Calculate
-                                                              </Button>
+                             </Button>
                             </Col>
                         </FormGroup>
                     </Form>

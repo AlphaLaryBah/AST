@@ -71,9 +71,9 @@ class StocksApi extends React.Component {
                 <CardBody>
                     <CardTitle tag="h5"></CardTitle>
                     <Form onSubmit={e => { e.preventDefault() }}  className="shadow-lg p-3 mb-5 bg-white rounded">
-                        <FormGroup row className=" d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded">
+                        <FormGroup row className=" d-flex justify-content-center shadow-lg  p-2 mb-3 bg-white rounded">
                      <Button className="bg-dark" >
-                                Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.searchField}</Badge>
+                                Stock Symbol: <Badge className="text-danger bg-light "> <span className="h2">{this.state.searchField}</span></Badge>
                             </Button>
                             <hr />
                             <Col md={6}>
@@ -84,7 +84,7 @@ class StocksApi extends React.Component {
                                             placeholder="Enter Stock Symbol"
                                             handleChange={(e) => this.setState({ searchField: e.target.value })} />
                                     </FormGroup>
-                                    <Button className="text-center  shadow-lg p-3 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                    <Button className="text-center  shadow-lg p-4 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                                 </InputGroup>
                             </Col>
                         </FormGroup>
@@ -109,7 +109,7 @@ class StocksApi extends React.Component {
                         </div>
                     </div>
                 </CardBody>
-                <CardBody>
+                <CardBody  className="">
                     <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
                 </CardBody>
             </Card>

@@ -45,16 +45,15 @@ class Rule72 extends Component {
 
     render() {
         return (
-            <Card>
+            <Card  className="shadow-lg p-3 mb-5 bg-white rounded">
                 <CardHeader className="text-center">Rule 72</CardHeader>
                 <CardBody>
                     <CardTitle className="text-center" tag="h5">Rule of 72 (R72) is a rule stating that in order to find the number of years required to double your money at a given interest rate, you divide the compound return into 72.</CardTitle>
 
                     <Form onSubmit={this.handleSubmit}>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row  className="shadow-lg p-3 mb-3 bg-white rounded">
                             <Label htmlFor="rate" md={3}> Annual Rate</Label>
                             <Col md={9}>
-
                                 <InputGroup>
                                     <InputGroupAddon addonType="prepend">Percent</InputGroupAddon>
                                     <Input type="number" step="1"
@@ -71,7 +70,7 @@ class Rule72 extends Component {
 
                         <FormGroup row className="mt-3">
                             <Col md={{ size: 10, offset: 2 }}>
-                                <Button type="submit" color="success">
+                                <Button type="submit" color="success"  className="shadow-lg p-3 mb-3  rounded">
                                     Calculate
                                                               </Button>
                             </Col>

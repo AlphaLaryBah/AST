@@ -211,23 +211,27 @@ class StocksGeneral extends Component {
                 </div>
 
                 <hr />
+                <div className="shadow-lg p-3 mb-5 bg-white rounded">
+
+                
                 <h5 className="text-dark text-center"> Let's Do The Math</h5>
-                <h3 className="text-center">Know Your Stock</h3>
-                <Form onSubmit={e => { e.preventDefault() }}>
+                    <h3 className="text-center">Know Your Stock</h3>
+                    </div>
+                <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-3 mb-5 bg-white rounded">
                     <FormGroup row className=" d-flex justify-content-center   ">
                         <Button className="bg-dark" >
-                            Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.search}</Badge>
+                            Stock Symbol: <Badge className="text-danger bg-light"><span className="h4"> {this.state.search}</span></Badge>
                         </Button>
                         <hr />
                         <Col md={6}>
                             <Label htmlFor="">Searh By Stock Symbol</Label>
-                            <InputGroup>
+                            <InputGroup className="shadow-lg p-3 mb-5 bg-white rounded ">
                                 <FormGroup className="">
                                     <CalcInput
                                         placeholder="Enter Stock Symbol"
                                         handleChange={(e) => this.setState({ search: e.target.value })} />
                                 </FormGroup>
-                                <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                <Button className="text-center shadow-lg p-3 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                             </InputGroup>
                         </Col>
                     </FormGroup>
@@ -235,34 +239,34 @@ class StocksGeneral extends Component {
                 <Tab.Container
                     id="left-tabs-example"
                     defaultActiveKey="first"
-                    className="">
+                    className="shadow-lg p-3 mb-5 bg-white rounded">
                     <Row>
                         <Col sm={3}>
-                            <Nav variant="" className="flex-row ">
-                                <Nav.Item className="">
-                                    <Nav.Link eventKey="one" className=" text-dark bg-warning " >CAGR</Nav.Link>
+                            <Nav variant="" className="flex-row shadow-lg p-3 mb-5 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                    <Nav.Link eventKey="one" className=" text-dark bg-warning shadow-lg p-3 mb-3 rounded " >CAGR</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="two" className="bg-dark text-light  "> FV</Nav.Link>
+                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                    <Nav.Link eventKey="two" className="bg-dark text-light shadow-lg p-3 mb-3  rounded "> FV</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="">
-                                    <Nav.Link eventKey="three" className="bg-info text-dark  " >Rule 72</Nav.Link>
+                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                    <Nav.Link eventKey="three" className="bg-info text-dark shadow-lg p-3 mb-3 rounded " >Rule 72</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="">
-                                    <Nav.Link eventKey="four" className="bg-dark text-light  "> Income Statement</Nav.Link>
+                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                    <Nav.Link eventKey="four" className="bg-dark text-light shadow-lg p-3 mb-3  rounded "> Income Statement</Nav.Link>
                                 </Nav.Item>
 
-                                <Nav.Item className="">
-                                    <Nav.Link eventKey="five" className="bg-info text-dark  " >Balance Sheet</Nav.Link>
+                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                    <Nav.Link eventKey="five" className="bg-info text-dark shadow-lg p-3 mb-3 bg-white rounded " >Balance Sheet</Nav.Link>
                                 </Nav.Item>
                                 {/* <Nav.Item className="">
                                     <Nav.Link eventKey="six" className="bg-dark text-light  "></Nav.Link>
                                 </Nav.Item> */}
                             </Nav>
                         </Col>
-                        <Col sm={9}>
+                        <Col sm={9} >
                             <Tab.Content>
-                                <Tab.Pane eventKey="one" className="text-dark">
+                                <Tab.Pane eventKey="one" className="text-dark" >
                                     <hr />
 
                                     <CagrCalc />
@@ -280,19 +284,19 @@ class StocksGeneral extends Component {
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="four" className="text-dark">
                                     <hr />
-                                    <Table responsive>
-                                        <thead>
+                                    <Table responsive  className="shadow-lg p-3 mb-5 bg-white rounded">
+                                        <thead >
                                             <tr>
-                                                <th>Company Name</th>
-                                                <th>Annual Net Income</th>
-                                                <th>Latest Quater Net Income</th>
-                                                <th>EBIT</th>
+                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Company Name</th>
+                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Annual Net Income</th>
+                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Latest Quater Net Income</th>
+                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">EBIT</th>
 
                                             </tr>
 
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                        <tbody >
+                                            <tr >
                                                 <th scope="row" className="text-center text-success">{this.state.company}</th>
                                                 <td>{curency + " " + parseFloat(this.state.anualIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                                                 <td>{curency + " " + parseFloat(this.state.quarterNetIncome).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
@@ -301,18 +305,18 @@ class StocksGeneral extends Component {
                                             </tr>
                                         </tbody>
                                     </Table>
-                                    <hr />
-                                    <h3 className="text-center text-danger"> <u>CAGR for {this.state.company}</u></h3>
+                                    {/* <hr /> */}
+                                    <h3 className="text-center text-danger shadow-lg p-3 mb-5 bg-white rounded"> <u>CAGR for {this.state.company}</u></h3>
                                     <Table responsive>
-                                        <thead>
+                                        <thead  >
                                             <tr>
-                                                <th>Company Name</th>
-                                                <th>Year One</th>
-                                                <th>Year Two</th>
-                                                <th>Year Three</th>
-                                                <th>Year Four </th>
-                                                <th>Current Year</th>
-                                                <th>Growth Rate 5yrs</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Company Name</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Year One</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Year Two</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Year Three</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Year Four </th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Current Year</th>
+                                                <th className="shadow-lg p-3 mb-5 bg-white rounded">Growth Rate 5yrs</th>
                                             </tr>
 
                                         </thead>
@@ -327,7 +331,7 @@ class StocksGeneral extends Component {
                                                 <td>{fiveYears + "%"}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">5yrs Net Income</th>
+                                                <th scope="row" className="shadow-lg p-3 mb-5 bg-white rounded">5yrs Net Income</th>
                                                 <td>{curency + " " + parseFloat(this.state.anualGrowth.year1).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                                                 <td>{curency + " " + parseFloat(this.state.anualGrowth.year2).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                                                 <td>{curency + " " + parseFloat(this.state.anualGrowth.year3).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
