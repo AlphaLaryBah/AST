@@ -1,11 +1,13 @@
 import React from 'react';
-import { Card,
-  CardTitle, CardText } from 'reactstrap';
+import {
+  Card,
+  CardTitle, CardText
+} from 'reactstrap';
 
 const StocksCard3 = (props) => {
   return (
-    <div>
-      <Card body outline color="secondary">
+    <div className="shadow-lg p-2 mb-5 bg-white rounded">
+      <Card body outline color="secondary" className="shadow-lg p-3 mb-5 bg-white rounded">
         <CardTitle tag="h5" className="text-center  text-success">{props.cardTitle}</CardTitle>
         <CardText>{props.cardText}</CardText>
       </Card>
@@ -29,7 +31,7 @@ const StocksCard3 = (props) => {
         <CardTitle tag="h5">Special Title Treatment</CardTitle>
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
       </Card> */}
-    
+
     </div>
   );
 };

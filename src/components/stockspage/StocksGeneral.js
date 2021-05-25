@@ -82,78 +82,70 @@ class StocksGeneral extends Component {
         let fourthY = [];
         let fithY = [];
 
-        fetch(API_Call)
-            .then(
-                function (response) {
-                    return response.json();
-                }
-            )
-            .then(
-                function (data) {
+        //     fetch(API_Call)
+        //         .then(
+        //             function (response) {
+        //                 return response.json();
+        //             }
+        //         )
+        //         .then(
+        //             function (data) {
 
-                    income.push(data.annualReports[0].netIncome);
-                    earningb4Tax.push(data.annualReports[0].ebit);
-                    stockName.push(data.symbol);
-                    quatrInc.push(data.quarterlyReports[0].netIncome);
+        //                 income.push(data.annualReports[0].netIncome);
+        //                 earningb4Tax.push(data.annualReports[0].ebit);
+        //                 stockName.push(data.symbol);
+        //                 quatrInc.push(data.quarterlyReports[0].netIncome);
 
-                    // YEARLY ANNual INCOME ARRAY from most current to old column
-                    firstY.push(data.annualReports[4].netIncome);
-                    secondY.push(data.annualReports[3].netIncome);
-                    thirdY.push(data.annualReports[2].netIncome);
-                    fourthY.push(data.annualReports[1].netIncome);
-                    fithY.push(data.annualReports[0].netIncome);
+        //                 // YEARLY ANNual INCOME ARRAY from most current to old column
+        //                 firstY.push(data.annualReports[4].netIncome);
+        //                 secondY.push(data.annualReports[3].netIncome);
+        //                 thirdY.push(data.annualReports[2].netIncome);
+        //                 fourthY.push(data.annualReports[1].netIncome);
+        //                 fithY.push(data.annualReports[0].netIncome);
 
-                    pointerToThis.setState({
-                        anualIncome: income,
-                        quarterNetIncome: quatrInc,
-                        eBit: earningb4Tax,
-                        company: stockName,
+        //                 pointerToThis.setState({
+        //                     anualIncome: income,
+        //                     quarterNetIncome: quatrInc,
+        //                     eBit: earningb4Tax,
+        //                     company: stockName,
 
-                        // YEARLY  Net INCOME ARRAY
-                        anualGrowth: {
-                            year5: fithY,
-                            year4: fourthY,
-                            year3: thirdY,
-                            year2: secondY,
-                            year1: firstY
-                        }
+        //                     // YEARLY  Net INCOME ARRAY
+        //                     anualGrowth: {
+        //                         year5: fithY,
+        //                         year4: fourthY,
+        //                         year3: thirdY,
+        //                         year2: secondY,
+        //                         year1: firstY
+        //                     }
 
-                    });
-                }
-            )
+        //                 });
+        //             }
+        //         )
 
-        let sharesOut = [];
-        let shareEquity = [];
+        //     let sharesOut = [];
+        //     let shareEquity = [];
 
-        fetch(API_CALL2)
-            .then(
-                function (response) {
-                    return response.json();
-                }
-            )
-            .then(
-                function (data) {
-                    sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
-                    shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
+        //     fetch(API_CALL2)
+        //         .then(
+        //             function (response) {
+        //                 return response.json();
+        //             }
+        //         )
+        //         .then(
+        //             function (data) {
+        //                 sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
+        //                 shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
 
-
-
-                    pointerToThis.setState({
-                        balanceSheet: {
-                            sharesOutStanding: sharesOut,
-                            shareHoldersEquity: shareEquity
-                        }
-
-
-
-                    });
-                }
-            )
+        //                 pointerToThis.setState({
+        //                     balanceSheet: {
+        //                         sharesOutStanding: sharesOut,
+        //                         shareHoldersEquity: shareEquity
+        //                     }
+        //      });
+        // }
+        // )
 
     }
-
-
-
     render() {
         let curency = "$";
         // COMPOUND ANNUAL GROWTH RATE
@@ -171,9 +163,9 @@ class StocksGeneral extends Component {
         let bookV = (this.state.balanceSheet.shareHoldersEquity) / (this.state.balanceSheet.sharesOutStanding);
         let BV = bookV.toFixed(2);
         return (
-            <div className="container-fluid">
+            <div className="container-fluid shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="row">
-                    <div className="col-sm-6 col-md-4 col-lg-2">
+                    <div className="col-sm-6 col-md-2 col-lg-2">
                         <StocksCard1
 
                             cardTitle={"KEY RATIOS of: " + this.state.company}
@@ -192,7 +184,7 @@ class StocksGeneral extends Component {
                             } />
                     </div>
 
-                    <div className="col-sm-6 col-md-7 col-lg-8">
+                    <div className="col-sm-6 col-md-5 col-lg-8">
                         <StocksCard2 />
 
                     </div>
@@ -356,10 +348,7 @@ class StocksGeneral extends Component {
                                                 <th>Company Name</th>
                                                 <th>shares Out-Standing</th>
                                                 <th>share Holders' Equity</th>
-                                                {/* <th>Year Three</th>
-                                                <th>Year Four </th>
-                                                <th>Current Year</th>
-                                                <th>Growth Rate 5yrs</th> */}
+
                                             </tr>
 
                                         </thead>
@@ -369,10 +358,7 @@ class StocksGeneral extends Component {
 
                                                 <td>{curency + " " + parseFloat(this.state.balanceSheet.sharesOutStanding).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                                                 <td>{curency + " " + parseFloat(this.state.balanceSheet.shareHoldersEquity).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                                                {/* {/* <td>{curency + " " + parseFloat(this.state.anualGrowth.year3).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
 
-                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year4).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                                                <td>{curency + " " + parseFloat(this.state.anualGrowth.year5).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td> */}
                                             </tr>
                                         </tbody>
                                     </Table>
@@ -383,21 +369,6 @@ class StocksGeneral extends Component {
                         </Col>
                     </Row>
                 </Tab.Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
 
         );

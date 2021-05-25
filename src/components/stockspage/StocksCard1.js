@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'reactstrap';
 import PopOverCalc from "../PopOverCalc"
-const StocksCard1= (props) => {
+const StocksCard1 = (props) => {
   return (
-    <div>
-      <Card body outline color="secondary">
-        <CardTitle tag="h5"  className="text-center text-success">{props.cardTitle}
-</CardTitle>
+    <div className="shadow-lg p-2 mb-5 bg-white rounded">
+      <Card body outline color="secondary" className="shadow-lg p-3 mb-5 bg-white rounded">
+        <CardTitle tag="h5" className="text-center text-success">{props.cardTitle}
+        </CardTitle>
         <CardText>            {props.cardText}</CardText>
         {props.children}
 
@@ -18,7 +18,7 @@ const StocksCard1= (props) => {
       <Card body outline color="success">
         <CardTitle tag="h5"></CardTitle>
         <CardText>
-          
+
           <PopOverCalc />
 
 

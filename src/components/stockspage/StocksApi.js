@@ -32,86 +32,68 @@ class StocksApi extends React.Component {
     fetchStocks(event) {
         let query = this.props.query;
         query = this.state.searchField;
-        console.log(query)
-
 
         const pointerToThis = this;
-        // console.log(pointerToThis)
         const API_KEY = process.env.REACT_APP_API_KEY;
         let StockSymbol = query;
         let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
         let stockChartXValueFuction = [];
         let stockChartYValueFuction = [];
 
+        // fetch(API_Call)
 
+        //     .then(
+        //         function (response) {
+        //             return response.json();
+        //         }
+        //     )
+        //     .then(
+        //         function (data) {
+        //             console.log(data);
+        //             for (var key in data['Time Series (Daily)']) {
+        //                 stockChartXValueFuction.push(key);
+        //                 stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
 
-        fetch(API_Call)
+        //             }
+        //             // console.log(stockChartXValueFuction)
+        //             pointerToThis.setState({
+        //                 stockChartXValue: stockChartXValueFuction,
+        //                 stockChartYValue: stockChartYValueFuction
 
-            .then(
-                function (response) {
-                    return response.json();
-                }
-            )
-            .then(
-                function (data) {
-                    console.log(data);
-                    for (var key in data['Time Series (Daily)']) {
-                        stockChartXValueFuction.push(key);
-                        stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
-
-                    }
-                    // console.log(stockChartXValueFuction)
-                    pointerToThis.setState({
-                        stockChartXValue: stockChartXValueFuction,
-                        stockChartYValue: stockChartYValueFuction
-
-                    });
-                }
-            )
+        //             });
+        //         }
+        //     )
 
     }
     render() {
-        return (<div className="">
+        return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
             <Card>
                 <CardBody>
                     <CardTitle tag="h5"></CardTitle>
-                    <Form onSubmit={e => { e.preventDefault() }}>
-                        <FormGroup row className=" d-flex justify-content-center   ">
-
-                            <Button className="bg-dark" >
+                    <Form onSubmit={e => { e.preventDefault() }}  className="shadow-lg p-3 mb-5 bg-white rounded">
+                        <FormGroup row className=" d-flex justify-content-center shadow-lg  p-3 mb-3 bg-white rounded">
+                     <Button className="bg-dark" >
                                 Stock Symbol: <Badge className="text-danger bg-light h-2">{this.state.searchField}</Badge>
                             </Button>
                             <hr />
-
                             <Col md={6}>
                                 <Label htmlFor="" >Searh By Stock Symbol</Label>
-
                                 <InputGroup>
                                     <FormGroup className="">
-
                                         <StockSearch
                                             placeholder="Enter Stock Symbol"
                                             handleChange={(e) => this.setState({ searchField: e.target.value })} />
-
                                     </FormGroup>
-
-                                    <Button className="text-center " outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
-
-
+                                    <Button className="text-center  shadow-lg p-3 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                                 </InputGroup>
-
                             </Col>
                         </FormGroup>
                     </Form>
                     <hr />
-
-                    <div className="container overflow-auto  clearfix">
+                    <div className="container overflow-auto  clearfix ">
                         <div className="row ">
                             <div className="col-sm-6 ">
-
-
-                                <Plot className=" mr-5"
-
+                         <Plot className=" mr-5"
                                     data={[
                                         {
                                             x: this.state.stockChartXValue,
@@ -120,38 +102,18 @@ class StocksApi extends React.Component {
                                             mode: 'lines+markers',
                                             marker: { color: 'red' },
                                         },
-
-
                                     ]}
-
-
                                     layout={{ title: 'Daily Adjusted Stock Prices' }}
-
-
-
-
                                 />
-
                             </div>
-
                         </div>
-
-
-
                     </div>
                 </CardBody>
-
                 <CardBody>
                     <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
-
                 </CardBody>
             </Card>
-
-
         </div>
-
-
-
         );
     }
 }

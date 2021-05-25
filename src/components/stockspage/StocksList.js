@@ -8,7 +8,7 @@ export default function Lists(props) {
 
 
   return (<div className="">
-    <ul className="list-group ">
+    <ul className="list-group  ">
       <li className="list-group-item d-flex justify-content-between align-items-center p-2 ">
         {props.list1}
         <Badge color="info" className="text-dark bg-info">{props.badge1}</Badge>
@@ -36,7 +36,7 @@ export default function Lists(props) {
       </li>
       <li className="list-group-item d-flex justify-content-between align-items-center p-2">
         {props.list7}
-        <Badge color="info" className="text-dark bg-info">{props.badge7}</Badge>
+        <Badge color="info" className="text-dark bg-info ">{props.badge7}</Badge>
       </li> <li className="list-group-item d-flex justify-content-between align-items-center p-2">
         {props.list8}
         <Badge color="info" className="text-dark bg-info">{props.badge8}</Badge>
