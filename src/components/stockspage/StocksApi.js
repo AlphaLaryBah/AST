@@ -70,9 +70,9 @@ class StocksApi extends React.Component {
             <Card>
                 <CardBody>
                     <CardTitle tag="h5"></CardTitle>
-                    <Form onSubmit={e => { e.preventDefault() }}  className="shadow-lg p-3 mb-5 bg-white rounded">
+                    <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-3 mb-5 bg-white rounded">
                         <FormGroup row className=" d-flex justify-content-center shadow-lg  p-2 mb-3 bg-white rounded">
-                     <Button className="bg-dark" >
+                            <Button className="bg-dark" >
                                 Stock Symbol: <Badge className="text-danger bg-light "> <span className="h2">{this.state.searchField}</span></Badge>
                             </Button>
                             <hr />
@@ -93,7 +93,7 @@ class StocksApi extends React.Component {
                     <div className="container overflow-auto  clearfix ">
                         <div className="row ">
                             <div className="col-sm-6 ">
-                         <Plot className=" mr-5"
+                                <Plot className=" mr-5"
                                     data={[
                                         {
                                             x: this.state.stockChartXValue,
@@ -109,7 +109,7 @@ class StocksApi extends React.Component {
                         </div>
                     </div>
                 </CardBody>
-                <CardBody  className="">
+                <CardBody className="">
                     <CardText className="text-center">This chart displays the adjusted daily prices of a stock for the current year.</CardText>
                 </CardBody>
             </Card>

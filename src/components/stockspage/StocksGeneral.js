@@ -51,11 +51,22 @@ class StocksGeneral extends Component {
         this.fetchStocks(this.state.search)
 
     };
+    // componentWillMount() {
+
+    //     localStorage.getItem('eb') && this.setState({
+    //         eb: JSON.parse(localStorage.getItem('eb'))
+    //     })
+    // }
     componentDidMount() {
         this.fetchStocks();
     }
+    // componentWillUpdate(nextProps, nextState) {
+    //     // const storage = [];
+    //     // storage.push(this.state.anualGrowth)
+    //     // console.log(storage)
+    //     localStorage.setItem('eb', JSON.stringify(nextState.eBit));
 
-
+    // }
     fetchStocks() {
         let look = this.props.look;
         look = this.state.search;
@@ -82,68 +93,68 @@ class StocksGeneral extends Component {
         let fourthY = [];
         let fithY = [];
 
-        //     fetch(API_Call)
-        //         .then(
-        //             function (response) {
-        //                 return response.json();
-        //             }
-        //         )
-        //         .then(
-        //             function (data) {
+        // fetch(API_Call)
+        //     .then(
+        //         function (response) {
+        //             return response.json();
+        //         }
+        //     )
+        //     .then(
+        //         function (data) {
 
-        //                 income.push(data.annualReports[0].netIncome);
-        //                 earningb4Tax.push(data.annualReports[0].ebit);
-        //                 stockName.push(data.symbol);
-        //                 quatrInc.push(data.quarterlyReports[0].netIncome);
+        //             income.push(data.annualReports[0].netIncome);
+        //             earningb4Tax.push(data.annualReports[0].ebit);
+        //             stockName.push(data.symbol);
+        //             quatrInc.push(data.quarterlyReports[0].netIncome);
 
-        //                 // YEARLY ANNual INCOME ARRAY from most current to old column
-        //                 firstY.push(data.annualReports[4].netIncome);
-        //                 secondY.push(data.annualReports[3].netIncome);
-        //                 thirdY.push(data.annualReports[2].netIncome);
-        //                 fourthY.push(data.annualReports[1].netIncome);
-        //                 fithY.push(data.annualReports[0].netIncome);
+        //             // YEARLY ANNual INCOME ARRAY from most current to old column
+        //             firstY.push(data.annualReports[4].netIncome);
+        //             secondY.push(data.annualReports[3].netIncome);
+        //             thirdY.push(data.annualReports[2].netIncome);
+        //             fourthY.push(data.annualReports[1].netIncome);
+        //             fithY.push(data.annualReports[0].netIncome);
 
-        //                 pointerToThis.setState({
-        //                     anualIncome: income,
-        //                     quarterNetIncome: quatrInc,
-        //                     eBit: earningb4Tax,
-        //                     company: stockName,
+        //             pointerToThis.setState({
+        //                 anualIncome: income,
+        //                 quarterNetIncome: quatrInc,
+        //                 eBit: earningb4Tax,
+        //                 company: stockName,
 
-        //                     // YEARLY  Net INCOME ARRAY
-        //                     anualGrowth: {
-        //                         year5: fithY,
-        //                         year4: fourthY,
-        //                         year3: thirdY,
-        //                         year2: secondY,
-        //                         year1: firstY
-        //                     }
+        //                 // YEARLY  Net INCOME ARRAY
+        //                 anualGrowth: {
+        //                     year5: fithY,
+        //                     year4: fourthY,
+        //                     year3: thirdY,
+        //                     year2: secondY,
+        //                     year1: firstY
+        //                 }
 
-        //                 });
-        //             }
-        //         )
+        //             });
+        //         }
+        //     )
 
-        //     let sharesOut = [];
-        //     let shareEquity = [];
+        // let sharesOut = [];
+        // let shareEquity = [];
 
-        //     fetch(API_CALL2)
-        //         .then(
-        //             function (response) {
-        //                 return response.json();
-        //             }
-        //         )
-        //         .then(
-        //             function (data) {
-        //                 sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
-        //                 shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
+        // fetch(API_CALL2)
+        //     .then(
+        //         function (response) {
+        //             return response.json();
+        //         }
+        //     )
+        //     .then(
+        //         function (data) {
+        //             sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
+        //             shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
 
-        //                 pointerToThis.setState({
-        //                     balanceSheet: {
-        //                         sharesOutStanding: sharesOut,
-        //                         shareHoldersEquity: shareEquity
-        //                     }
-        //      });
-        // }
-        // )
+        //             pointerToThis.setState({
+        //                 balanceSheet: {
+        //                     sharesOutStanding: sharesOut,
+        //                     shareHoldersEquity: shareEquity
+        //                 }
+        //             });
+        //         }
+        //     )
 
     }
     render() {
@@ -213,10 +224,10 @@ class StocksGeneral extends Component {
                 <hr />
                 <div className="shadow-lg p-3 mb-5 bg-white rounded">
 
-                
-                <h5 className="text-dark text-center"> Let's Do The Math</h5>
+
+                    <h5 className="text-dark text-center"> Let's Do The Math</h5>
                     <h3 className="text-center">Know Your Stock</h3>
-                    </div>
+                </div>
                 <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-3 mb-5 bg-white rounded">
                     <FormGroup row className=" d-flex justify-content-center   ">
                         <Button className="bg-dark" >
@@ -284,13 +295,13 @@ class StocksGeneral extends Component {
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="four" className="text-dark">
                                     <hr />
-                                    <Table responsive  className="shadow-lg p-3 mb-5 bg-white rounded">
+                                    <Table responsive className="shadow-lg p-3 mb-5 bg-white rounded">
                                         <thead >
                                             <tr>
-                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Company Name</th>
-                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Annual Net Income</th>
-                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">Latest Quater Net Income</th>
-                                                <th  className="shadow-lg p-2 mb-2 bg-white rounded">EBIT</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Company Name</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Annual Net Income</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">Latest Quater Net Income</th>
+                                                <th className="shadow-lg p-2 mb-2 bg-white rounded">EBIT</th>
 
                                             </tr>
 

@@ -8,8 +8,7 @@ import "./personal.css";
 
 
 function Personal() {
-  return (
-    <div className=" bg-dark">
+  return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
       <div className="row" style={{ marginTop: 53 }}>
         <div className="col bg-dark">
         <Breadcrumb>

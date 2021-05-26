@@ -12,23 +12,23 @@ import "./StocksTabs.css";
 export default function StocksTabs() {
 
   return (
-
+ <div className="shadow-lg p-3 mb-5 bg-white rounded">
     <div className="ml-3 mr-3 text-dark mt-2 mb-5">
-      <h1 className="text-dark text-center"> VALUE INNVESTING RULES</h1>
-      <hr />
+      <h1 className="text-dark text-center "> VALUE INNVESTING RULES</h1>
+      
 
-      <Tabs fill defaultActiveKey="profile" id="">
+      <Tabs fill defaultActiveKey="profile" id="" className="shadow-lg p-3 mb-5 bg-white rounded">
         <Tab eventKey="leadership" title="BUFFET RULES" className="">
           <hr />
 
-          <StocksNavs
+          <StocksNavs className=""
             navTittle="BUFFET RULES"
             navLink1="DEBT/EQUITY RATIO"
             content1={
               <div>
                 <hr />
 
-                <h5 className="text-center text-info">LEADERSHIP:</h5>
+                <h5 className="text-center text-info shadow-lg p-3 mb-5 bg-white rounded">LEADERSHIP</h5>
                 <ul className="overFlow">
                   <hr />
 
@@ -526,7 +526,8 @@ export default function StocksTabs() {
           />
         </Tab>
       </Tabs>
-    </div>
+      </div>
+      </div>
 
   );
 }
