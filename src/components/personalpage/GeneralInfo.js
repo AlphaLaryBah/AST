@@ -7,8 +7,6 @@ import ChartGenearal from "./ChartGenearal"
 import PersonCard1 from "./PersonCard1";
 import PersonCard3 from "./PersonCard3";
 
-
-
 class GeneralInfo extends Component {
     constructor(props) {
         super(props);
@@ -22,9 +20,6 @@ class GeneralInfo extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
-
     }
 
 
@@ -90,42 +85,35 @@ class GeneralInfo extends Component {
     }
 
     render() {
-        return (<div className="comtainer-fluid ">
+        return (<div className="comtainer-fluid  shadow-lg  mb-3 bg-white rounded">
             <div className="row">
                 <div className="col-sm-6 col-md-4 col-lg-2">
-                    <PersonCard1
+                    <PersonCard1 className=""
                         income={this.state.income}
                         estimated={this.state.estimate}
                         investments={this.state.investments}
                         value={this.state.finito}
                         debts={this.state.debts}
-
                     />
-
                 </div>
-
                 <div className="col-sm-6 col-md-7 col-lg-8">
                     <ChartGenearal data={this.state.chartArr} />
-
                 </div>
                 <div className="col-sm-6 col-md-4 col-lg-2">
-                    <PersonCard3
+                    <PersonCard3 className=""
                         netIncome={this.state.finito}
-
                     />
 
                 </div>
 
                 <div className=" col-sm-6 col-md-12 col-lg-12 ">
-                    <hr />
 
-                    <Form onSubmit={this.handleSubmit} className="">
+                    <Form onSubmit={this.handleSubmit} className="shadow-lg p-1 mb-3 bg-white rounded">
                         <div style={{ flexDirection: 'row', alignItems: 'center' }}>
 
-                            <h2 className="text-center text-muted"><u> ASSETS <spam className="text-dark"> and</spam> LIABILITIES</u></h2>
-                            <hr />
+                            <h2 className="text-center  shadow-lg p-3 mb-3 bg-white rounded">ASSETS  and LIABILITIES</h2>
 
-                            <FormGroup row className="mb-3 ">
+                            <FormGroup row className="shadow-lg p-3 mb-2 bg-white rounded">
                                 <Label htmlFor="income" md={3}>Your Income</Label>
                                 <Col >
 
@@ -142,7 +130,7 @@ class GeneralInfo extends Component {
 
                                 </Col>
                             </FormGroup>
-                            <FormGroup row className="mb-3">
+                            <FormGroup row className="shadow-lg p-3 mb-2 bg-white rounded">
                                 <Label htmlFor="estimate" md={3}>Estimated Income</Label>
                                 <Col >
                                     <InputGroup>
@@ -157,7 +145,7 @@ class GeneralInfo extends Component {
                                     </InputGroup>
                                 </Col>
                             </FormGroup>
-                            <FormGroup row className="mb-3">
+                            <FormGroup row className="shadow-lg p-3 mb-2 bg-white rounded">
                                 <Label htmlFor="investments" md={3}>Investments</Label>
                                 <Col >
                                     <InputGroup>
@@ -171,7 +159,7 @@ class GeneralInfo extends Component {
                                     </InputGroup>
                                 </Col>
                             </FormGroup>
-                            <FormGroup row className="mb-3">
+                            <FormGroup row className="shadow-lg p-3 mb-2 bg-white rounded">
                                 <Label htmlFor="debts" md={3}>Debts</Label>
                                 <Col >
                                     <InputGroup>
@@ -186,67 +174,52 @@ class GeneralInfo extends Component {
                                 </Col>
                             </FormGroup>
 
-                            <FormGroup row className="mt-3 ">
+                            <FormGroup row className="shadow-lg p-3 mb-2 bg-white rounded">
                                 <Col md={{ size: 10, offset: 2 }}>
                                     <Button type="submit" color="success" className=''>
                                         Submit
                                     </Button>
                                 </Col>
                             </FormGroup>
-                            </div>
-                   </Form>
-                        <hr />
-
-                     </div>
-                    <div className="w-60  ">
-                        <div className="mt-3 mb-3 bg-dark p-3  ">
-                            <Table hover className="bg-light mt-2 rounded p-3">
-
-                                <thead>
-                                    <tr>
-                                        <th className="text-success text-center">ASSETS and LIABILITIES</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Income</th>
-                                        <td>{this.state.income}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Estimate</th>
-                                        <td>{this.state.estimate}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Investment</th>
-                                        <td>{this.state.investments}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>debts</th>
-                                        <td>{this.state.debts}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total</th>
-                                        <td> =     {this.state.finito}</td>
-                                    </tr>
-                                </thead>
-                            </Table>
                         </div>
-
-                    </div>
-
-
+                    </Form>
 
                 </div>
+                <div className="w-60  shadow-lg p-3 mb-3 bg-white rounded">
+                    <div className="mt-3 mb-3  p-3  ">
+                        <Table hover className="bg-light mt-2 rounded p-3">
+                            <thead>
+                                <tr>
+                                    <th className="text-success text-center shadow-lg p-3 mb-3 bg-white rounded">ASSETS and LIABILITIES</th>
+                                </tr>
+                                <tr>
+                                    <th>Income</th>
+                                    <td>{this.state.income}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estimate</th>
+                                    <td>{this.state.estimate}</td>
+                                </tr>
+                                <tr>
+                                    <th>Investment</th>
+                                    <td>{this.state.investments}</td>
+                                </tr>
+                                <tr>
+                                    <th>debts</th>
+                                    <td>{this.state.debts}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td className="shadow-lg p-3 mb-5 bg-white rounded"> =  $   {this.state.finito}</td>
+                                </tr>
+                            </thead>
+                        </Table>
+                    </div>
+                </div>
             </div>
-                // </div>
-
-
-
-
-
+        </div>
         );
-
-
     }
-
 }
 
 export default GeneralInfo;

@@ -14,7 +14,7 @@ class NavHeader extends React.Component {
             <Link
               to="/home"
               style={{ textDecoration: "none" }}
-              className="text-dark"
+              className="text-dark "
             >
               A$'T
             </Link>

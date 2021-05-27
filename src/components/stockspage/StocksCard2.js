@@ -8,8 +8,8 @@ import StocksApi from "./StocksApi";
 
 const StocksCard2 = (props) => {
   return (
-    <div className="shadow-lg p-3 mb-5 bg-white rounded">
-      <Card className="shadow-lg p-3 mb-5 bg-white rounded">
+    <div className="">
+      <Card className="">
         <CardBody>
           <CardTitle tag="h5" className="text-center">ADJUSTED DAILY PRICES</CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}

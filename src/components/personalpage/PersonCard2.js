@@ -1,26 +1,24 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody,
+  Card, CardBody,
   CardTitle, CardSubtitle
 } from 'reactstrap';
 
 
 const PersonCard2 = (props) => {
   return (
-    <div>
+    <div className="">
       <Card>
         <CardBody>
-          <CardTitle tag="h5" className="text-center">GENERAL INFORMATION and CHARTS</CardTitle>
-          <hr/>
-          <CardSubtitle tag="h6" className="mb-2 text-muted text-center">Know Your Money</CardSubtitle>
-
+          <CardTitle tag="h5" className="text-center shadow-lg p-3 mb-5 bg-white rounded">GENERAL INFORMATION and CHARTS</CardTitle>
+          {/* <hr /> */}
+          <CardSubtitle tag="h6" className="mb-2 text-muted text-center ">Know Your Money</CardSubtitle>
         </CardBody>
-        <CardBody>
+        <CardBody >
           {props.generalInfo}
           {props.personalNavs}
-          <CardText></CardText>
-         
         </CardBody>
+
       </Card>
     </div>
   );

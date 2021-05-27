@@ -11,12 +11,12 @@ const Example = (props) => {
   
     return (
       <div >
-        <Button id="Popover1" type="button" className="bg-dark">
+        <Button id="Popover1" type="button" className="text-dark shadow-lg p-1 mb-3 bg-white rounded">
           CALCULATOR
         </Button>
         <Popover placement="auto" isOpen={popoverOpen} target="Popover1" toggle={toggle} >
-          <PopoverHeader className="bg-dark text-light text-center">CALCULATOR</PopoverHeader>
-                <PopoverBody className="bg-dark">
+          <PopoverHeader className="text-light bg-dark text-center">CALCULATOR</PopoverHeader>
+                <PopoverBody className="shadow-lg p-1 mb-3 bg-white rounded">
                     <Calculate />
                 </PopoverBody>
         </Popover>

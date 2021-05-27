@@ -26,9 +26,21 @@ class StocksApi extends React.Component {
         this.fetchStocks(this.state.searchField)
 
     };
+    // componentWillMount() {
+
+    //     localStorage.getItem('STApi') && this.setState({
+    //         STocksGen: JSON.parse(localStorage.getItem('STApi'))
+    //     })
+    // }
     componentDidMount() {
         this.fetchStocks();
     }
+
+    // componentWillUpdate(nextProps, nextState) {
+
+    //     localStorage.setItem('STApi', JSON.stringify(this.state));
+
+    // }
     fetchStocks(event) {
         let query = this.props.query;
         query = this.state.searchField;
@@ -66,12 +78,12 @@ class StocksApi extends React.Component {
 
     }
     render() {
-        return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
+        return (<div className="">
             <Card>
                 <CardBody>
                     <CardTitle tag="h5"></CardTitle>
-                    <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-3 mb-5 bg-white rounded">
-                        <FormGroup row className=" d-flex justify-content-center shadow-lg  p-2 mb-3 bg-white rounded">
+                    <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-1 mb-3 bg-white rounded">
+                        <FormGroup row className=" d-flex justify-content-center shadow-lg  p-1 mb-3 bg-white rounded">
                             <Button className="bg-dark" >
                                 Stock Symbol: <Badge className="text-danger bg-light "> <span className="h2">{this.state.searchField}</span></Badge>
                             </Button>
@@ -84,7 +96,7 @@ class StocksApi extends React.Component {
                                             placeholder="Enter Stock Symbol"
                                             handleChange={(e) => this.setState({ searchField: e.target.value })} />
                                     </FormGroup>
-                                    <Button className="text-center  shadow-lg p-4 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                    <Button className="text-center  shadow-lg p-1 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                                 </InputGroup>
                             </Col>
                         </FormGroup>

@@ -8,7 +8,7 @@ import "./personal.css";
 
 
 function Personal() {
-  return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
+  return (<div className="shadow-lg mb-5 bg-white rounded">
       <div className="row" style={{ marginTop: 53 }}>
         <div className="col bg-dark">
         <Breadcrumb>
@@ -25,8 +25,7 @@ function Personal() {
 
     <div className="container-fluid" style={{ marginTop: 10 }}>
       <div className="row">
-    
-
+  
         <div className="">
             <PersonCard2
               generalInfo={<GeneralInfo />

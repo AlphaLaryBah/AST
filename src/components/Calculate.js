@@ -16,7 +16,7 @@ class Calculate extends Component {
     console.log(`${newResult.expression} is validated as ${newResult.result} `)
   }
   render() {
-    return <div className='calculator-demo p-3' style={style}>
+    return <div className='calculator-demo shadow-lg p-3 mb-5 bg-white rounded' style={style}>
       <Calculator
         onNewInput={this.handleInput}
         onResultChange={this.onResultChange}/>

@@ -6,8 +6,6 @@ import {
 
 import ExpensesChart from "./ExpensesChart";
 
-
-
 class GeneralInfo extends Component {
     constructor(props) {
         super(props);
@@ -71,20 +69,17 @@ class GeneralInfo extends Component {
     render() {
         return (
 
-            <div className="row row-content">
+            <div className="row row-content shadow-lg  mb-3 bg-white rounded">
                 <div className="col-12">
-                    <hr />
-                    <h2 className="text-center bg-danger rounded text-light">MONTHLY EXPENSES(Liabilities)</h2>
-                    <hr />
+                    <h2 className="text-center bg-danger shadow-lg mb-3 rounded text-light">MONTHLY EXPENSES</h2>
                     <ExpensesChart data={this.state.chartArr} />
 
                 </div>
 
                 <div className="col-md-10 mt-4">
-                    <hr />
 
-                    <Form onSubmit={this.handleSubmit}>
-                        <FormGroup row className="mb-3">
+                    <Form onSubmit={this.handleSubmit} className="shadow-lg p-1 mb-5 bg-white rounded">
+                        <FormGroup row className="mb-3 shadow-sm">
                             <Label htmlFor="groceries" md={3}>Groceries</Label>
                             <Col md={9}>
 
@@ -101,7 +96,7 @@ class GeneralInfo extends Component {
 
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className="mb-3 shadow-sm">
                             <Label htmlFor="eatingOut" md={3}>Eating Out</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -116,7 +111,7 @@ class GeneralInfo extends Component {
                                 </InputGroup>
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className="mb-3 shadow-sm">
                             <Label htmlFor="transportation" md={3}>Transportation</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -130,7 +125,7 @@ class GeneralInfo extends Component {
                                 </InputGroup>
                             </Col>
                         </FormGroup>
-                        <FormGroup row className="mb-3">
+                        <FormGroup row className="mb-3 shadow-sm">
                             <Label htmlFor="onlinePurchases" md={3}>Online Purchases</Label>
                             <Col md={9}>
                                 <InputGroup>
@@ -145,7 +140,7 @@ class GeneralInfo extends Component {
                             </Col>
                         </FormGroup>
 
-                        <FormGroup row className="mt-3">
+                        <FormGroup row className="mt-3 shadow-sm">
                             <Col md={{ size: 10, offset: 2 }}>
                                 <Button type="submit" color="success">
                                     Calculate
@@ -155,7 +150,7 @@ class GeneralInfo extends Component {
                     </Form>
                     <hr />
                 </div>
-                <div className="mt-3 mb-3 bg-dark p-3 container-fluid">
+                <div className="mt-3 mb-3  p-3 container-fluid">
                     <div className="row">
                         <div className="">
 
@@ -163,7 +158,7 @@ class GeneralInfo extends Component {
                                 <thead>
 
                                     <tr>
-                                        <th className="text-success text-center">Daily Expenses</th>
+                                        <th className="text-success text-center shadow-lg p-1 mb-3 bg-white rounded">Daily Expenses</th>
                                     </tr>
                                     <tr>
 
@@ -173,8 +168,7 @@ class GeneralInfo extends Component {
                                     </tr>
                                     <tr>
 
-
-                                        <th>EatingOut</th>
+                                       <th>EatingOut</th>
                                         <td>{this.state.eatingOut}</td>
 
                                     </tr>
@@ -193,30 +187,16 @@ class GeneralInfo extends Component {
                                     <tr>
 
                                         <th>Total</th>
-                                        <td> =  {this.state.monthly}</td>
-
-
-
+                                        <td className="shadow-lg  mb-2 bg-white rounded "> = $ {this.state.monthly}</td>
                                     </tr>
-
                                 </thead>
-
                             </Table>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         );
-
-
     }
-
 }
 
 export default GeneralInfo;

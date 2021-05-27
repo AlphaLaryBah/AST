@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
     Col, Table, InputGroup, Form, FormGroup, Badge, Button, Label
 } from 'reactstrap';
+
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Nav from "react-bootstrap/Nav";
@@ -15,6 +16,7 @@ import CalcInput from "./CalcInput";
 import { BsSearch } from "react-icons/bs";
 import Rule72 from "./Rule72";
 import { Finance } from 'financejs';
+
 
 
 class StocksGeneral extends Component {
@@ -45,29 +47,47 @@ class StocksGeneral extends Component {
         };
 
 
+
+
     }
+
 
     handleSearch = () => {
         this.fetchStocks(this.state.search)
 
     };
-    // componentWillMount() {
+    componentWillMount() {
 
-    //     localStorage.getItem('eb') && this.setState({
-    //         eb: JSON.parse(localStorage.getItem('eb'))
-    //     })
-    // }
-    componentDidMount() {
-        this.fetchStocks();
+        window.localStorage.getItem('STocksGen');
+        this.setState({
+            STocksGen: JSON.parse(window.localStorage.getItem('STocksGen'))
+
+        })
     }
-    // componentWillUpdate(nextProps, nextState) {
-    //     // const storage = [];
-    //     // storage.push(this.state.anualGrowth)
-    //     // console.log(storage)
-    //     localStorage.setItem('eb', JSON.stringify(nextState.eBit));
+    componentDidMount() {
 
-    // }
+        if (!window.localStorage.setItem('STocksGen', JSON.stringify(this.state))) {
+            this.fetchStocks();
+
+
+        } else {
+
+
+            console.log("using data from local storage")
+            console.log(window.localStorage.getItem('STocksGen'))
+
+        }
+
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+
+        window.localStorage.setItem('STocksGen', JSON.stringify(this.state));
+
+    }
     fetchStocks() {
+        // console.log('Current state is: ' + JSON.stringify(this.state));
+
         let look = this.props.look;
         look = this.state.search;
 
@@ -155,8 +175,8 @@ class StocksGeneral extends Component {
         //             });
         //         }
         //     )
-
     }
+
     render() {
         let curency = "$";
         // COMPOUND ANNUAL GROWTH RATE
@@ -174,7 +194,7 @@ class StocksGeneral extends Component {
         let bookV = (this.state.balanceSheet.shareHoldersEquity) / (this.state.balanceSheet.sharesOutStanding);
         let BV = bookV.toFixed(2);
         return (
-            <div className="container-fluid shadow-lg p-3 mb-5 bg-white rounded">
+            <div className="container-fluid shadow-lg  mb-3 bg-white rounded">
                 <div className="row">
                     <div className="col-sm-6 col-md-2 col-lg-2">
                         <StocksCard1
@@ -222,13 +242,13 @@ class StocksGeneral extends Component {
                 </div>
 
                 <hr />
-                <div className="shadow-lg p-3 mb-5 bg-white rounded">
+                <div className="shadow-lg  mb-3 bg-white rounded">
 
 
                     <h5 className="text-dark text-center"> Let's Do The Math</h5>
                     <h3 className="text-center">Know Your Stock</h3>
                 </div>
-                <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-3 mb-5 bg-white rounded">
+                <Form onSubmit={e => { e.preventDefault() }} className="shadow-lg p-1 mb-3 bg-white rounded">
                     <FormGroup row className=" d-flex justify-content-center   ">
                         <Button className="bg-dark" >
                             Stock Symbol: <Badge className="text-danger bg-light"><span className="h4"> {this.state.search}</span></Badge>
@@ -242,7 +262,7 @@ class StocksGeneral extends Component {
                                         placeholder="Enter Stock Symbol"
                                         handleChange={(e) => this.setState({ search: e.target.value })} />
                                 </FormGroup>
-                                <Button className="text-center shadow-lg p-3 mb-5 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                <Button className="text-center shadow-lg p-1 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                             </InputGroup>
                         </Col>
                     </FormGroup>
@@ -250,7 +270,7 @@ class StocksGeneral extends Component {
                 <Tab.Container
                     id="left-tabs-example"
                     defaultActiveKey="first"
-                    className="shadow-lg p-3 mb-5 bg-white rounded">
+                    className="shadow-lg p-1 mb-3 bg-white rounded">
                     <Row>
                         <Col sm={3}>
                             <Nav variant="" className="flex-row shadow-lg p-3 mb-5 bg-white rounded">
