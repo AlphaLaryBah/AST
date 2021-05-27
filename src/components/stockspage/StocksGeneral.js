@@ -113,68 +113,68 @@ class StocksGeneral extends Component {
         let fourthY = [];
         let fithY = [];
 
-        // fetch(API_Call)
-        //     .then(
-        //         function (response) {
-        //             return response.json();
-        //         }
-        //     )
-        //     .then(
-        //         function (data) {
+        fetch(API_Call)
+            .then(
+                function (response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function (data) {
 
-        //             income.push(data.annualReports[0].netIncome);
-        //             earningb4Tax.push(data.annualReports[0].ebit);
-        //             stockName.push(data.symbol);
-        //             quatrInc.push(data.quarterlyReports[0].netIncome);
+                    income.push(data.annualReports[0].netIncome);
+                    earningb4Tax.push(data.annualReports[0].ebit);
+                    stockName.push(data.symbol);
+                    quatrInc.push(data.quarterlyReports[0].netIncome);
 
-        //             // YEARLY ANNual INCOME ARRAY from most current to old column
-        //             firstY.push(data.annualReports[4].netIncome);
-        //             secondY.push(data.annualReports[3].netIncome);
-        //             thirdY.push(data.annualReports[2].netIncome);
-        //             fourthY.push(data.annualReports[1].netIncome);
-        //             fithY.push(data.annualReports[0].netIncome);
+                    // YEARLY ANNual INCOME ARRAY from most current to old column
+                    firstY.push(data.annualReports[4].netIncome);
+                    secondY.push(data.annualReports[3].netIncome);
+                    thirdY.push(data.annualReports[2].netIncome);
+                    fourthY.push(data.annualReports[1].netIncome);
+                    fithY.push(data.annualReports[0].netIncome);
 
-        //             pointerToThis.setState({
-        //                 anualIncome: income,
-        //                 quarterNetIncome: quatrInc,
-        //                 eBit: earningb4Tax,
-        //                 company: stockName,
+                    pointerToThis.setState({
+                        anualIncome: income,
+                        quarterNetIncome: quatrInc,
+                        eBit: earningb4Tax,
+                        company: stockName,
 
-        //                 // YEARLY  Net INCOME ARRAY
-        //                 anualGrowth: {
-        //                     year5: fithY,
-        //                     year4: fourthY,
-        //                     year3: thirdY,
-        //                     year2: secondY,
-        //                     year1: firstY
-        //                 }
+                        // YEARLY  Net INCOME ARRAY
+                        anualGrowth: {
+                            year5: fithY,
+                            year4: fourthY,
+                            year3: thirdY,
+                            year2: secondY,
+                            year1: firstY
+                        }
 
-        //             });
-        //         }
-        //     )
+                    });
+                }
+            )
 
-        // let sharesOut = [];
-        // let shareEquity = [];
+        let sharesOut = [];
+        let shareEquity = [];
 
-        // fetch(API_CALL2)
-        //     .then(
-        //         function (response) {
-        //             return response.json();
-        //         }
-        //     )
-        //     .then(
-        //         function (data) {
-        //             sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
-        //             shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
+        fetch(API_CALL2)
+            .then(
+                function (response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function (data) {
+                    sharesOut.push(data.quarterlyReports[0].commonStockSharesOutstanding);
+                    shareEquity.push(data.quarterlyReports[0].totalShareholderEquity);
 
-        //             pointerToThis.setState({
-        //                 balanceSheet: {
-        //                     sharesOutStanding: sharesOut,
-        //                     shareHoldersEquity: shareEquity
-        //                 }
-        //             });
-        //         }
-        //     )
+                    pointerToThis.setState({
+                        balanceSheet: {
+                            sharesOutStanding: sharesOut,
+                            shareHoldersEquity: shareEquity
+                        }
+                    });
+                }
+            )
     }
 
     render() {
@@ -256,13 +256,13 @@ class StocksGeneral extends Component {
                         <hr />
                         <Col md={6}>
                             <Label htmlFor="">Searh By Stock Symbol</Label>
-                            <InputGroup className="shadow-lg p-3 mb-5 bg-white rounded ">
+                            <InputGroup className="shadow-lg  mb-2 bg-white rounded ">
                                 <FormGroup className="">
                                     <CalcInput
                                         placeholder="Enter Stock Symbol"
                                         handleChange={(e) => this.setState({ search: e.target.value })} />
                                 </FormGroup>
-                                <Button className="text-center shadow-lg p-1 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                <Button className="text-center shadow-lg p-2 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                             </InputGroup>
                         </Col>
                     </FormGroup>
@@ -270,24 +270,24 @@ class StocksGeneral extends Component {
                 <Tab.Container
                     id="left-tabs-example"
                     defaultActiveKey="first"
-                    className="shadow-lg p-1 mb-3 bg-white rounded">
+                    className="">
                     <Row>
                         <Col sm={3}>
-                            <Nav variant="" className="flex-row shadow-lg p-3 mb-5 bg-white rounded">
-                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                            <Nav variant="" className="flex-row shadow-lg p-1 mb-2 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-1 mb-2 bg-white rounded">
                                     <Nav.Link eventKey="one" className=" text-dark bg-warning shadow-lg p-3 mb-3 rounded " >CAGR</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-1 mb-2 bg-white rounded">
                                     <Nav.Link eventKey="two" className="bg-dark text-light shadow-lg p-3 mb-3  rounded "> FV</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-1 mb-2 bg-white rounded">
                                     <Nav.Link eventKey="three" className="bg-info text-dark shadow-lg p-3 mb-3 rounded " >Rule 72</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-1 mb-2 bg-white rounded">
                                     <Nav.Link eventKey="four" className="bg-dark text-light shadow-lg p-3 mb-3  rounded "> Income Statement</Nav.Link>
                                 </Nav.Item>
 
-                                <Nav.Item className="shadow-lg p-3 mb-2 bg-white rounded">
+                                <Nav.Item className="shadow-lg p-1 mb-2 bg-white rounded">
                                     <Nav.Link eventKey="five" className="bg-info text-dark shadow-lg p-3 mb-3 bg-white rounded " >Balance Sheet</Nav.Link>
                                 </Nav.Item>
                                 {/* <Nav.Item className="">
@@ -315,7 +315,7 @@ class StocksGeneral extends Component {
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="four" className="text-dark">
                                     <hr />
-                                    <Table responsive className="shadow-lg p-3 mb-5 bg-white rounded">
+                                    <Table responsive className="shadow-lg p-1 mb-3 bg-white rounded">
                                         <thead >
                                             <tr>
                                                 <th className="shadow-lg p-2 mb-2 bg-white rounded">Company Name</th>

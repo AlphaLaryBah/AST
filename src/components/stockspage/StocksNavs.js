@@ -6,24 +6,23 @@ import Nav from "react-bootstrap/Nav";
 
 export default function StocksNavs(props) {
   return (
-    <div className="shadow-lg p-3 mb-5 bg-white rounded">
+    <div className="shadow-lg p-1 mb-3 bg-white rounded">
       <h5 className="text-dark text-center"> {props.navTittle}</h5>
 
       <Tab.Container
         id="left-tabs-example"
         defaultActiveKey="first"
-        // className="shadow-lg p-3 mb-3 bg-white rounded"
       >
         <Row>
           <Col sm={3}>
-            <Nav variant="pills" className="flex-column shadow-lg p-3 mb-5 bg-white rounded">
-              <Nav.Item className="shadow-lg p-3 mb-3 bg-white rounded">
+            <Nav variant="pills" className="flex-column shadow-lg p-1 mb-3 bg-white rounded">
+              <Nav.Item className="shadow-lg p-1 mb-3 bg-white rounded">
                 <Nav.Link eventKey="one" >{props.navLink1}</Nav.Link>
               </Nav.Item>
-              <Nav.Item className="shadow-lg p-3 mb-3 bg-white rounded">
+              <Nav.Item className="shadow-lg p-1 mb-3 bg-white rounded">
                 <Nav.Link eventKey="two" >{props.navLink2}</Nav.Link>
               </Nav.Item>
-              <Nav.Item className="shadow-lg p-3 mb-3 bg-white rounded">
+              <Nav.Item className="shadow-lg p-1 mb-3 bg-white rounded">
                 <Nav.Link eventKey="three" >{props.navLink3}</Nav.Link>
               </Nav.Item>
               {/* <Nav.Item className="shadow-lg p-3 mb-3 bg-white rounded">

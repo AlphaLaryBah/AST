@@ -47,10 +47,10 @@ class CagrCalc extends Component {
     }
 
     render() {
-        return (<div className="shadow-lg p-3 mb-5 bg-white rounded">
+        return (<div className="shadow-lg mb-3 bg-white rounded">
 
             <Card className="shadow-lg p-3 mb-5 bg-white rounded">
-                <CardHeader className="text-center">CAGR: Coumpounded Annual Growth Rate</CardHeader>
+                <CardHeader className="text-center bg-dark text-light">CAGR: Coumpounded Annual Growth Rate</CardHeader>
                 <CardBody >
                     <CardTitle className="text-center " tag="h5">Compound Annual Growth Rate (CAGR) is the year-over-year growth rate of an investment over a specified period of time</CardTitle>
 

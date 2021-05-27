@@ -45,8 +45,8 @@ class Rule72 extends Component {
 
     render() {
         return (
-            <Card  className="shadow-lg p-3 mb-5 bg-white rounded">
-                <CardHeader className="text-center">Rule 72</CardHeader>
+            <Card  className="shadow-lg p-1 mb-3 bg-white rounded">
+                <CardHeader className="text-center bg-dark text-light">Rule 72</CardHeader>
                 <CardBody>
                     <CardTitle className="text-center" tag="h5">Rule of 72 (R72) is a rule stating that in order to find the number of years required to double your money at a given interest rate, you divide the compound return into 72.</CardTitle>
 

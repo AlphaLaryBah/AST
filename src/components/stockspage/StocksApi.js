@@ -26,21 +26,12 @@ class StocksApi extends React.Component {
         this.fetchStocks(this.state.searchField)
 
     };
-    // componentWillMount() {
 
-    //     localStorage.getItem('STApi') && this.setState({
-    //         STocksGen: JSON.parse(localStorage.getItem('STApi'))
-    //     })
-    // }
     componentDidMount() {
         this.fetchStocks();
     }
 
-    // componentWillUpdate(nextProps, nextState) {
 
-    //     localStorage.setItem('STApi', JSON.stringify(this.state));
-
-    // }
     fetchStocks(event) {
         let query = this.props.query;
         query = this.state.searchField;
@@ -52,29 +43,29 @@ class StocksApi extends React.Component {
         let stockChartXValueFuction = [];
         let stockChartYValueFuction = [];
 
-        // fetch(API_Call)
+        fetch(API_Call)
 
-        //     .then(
-        //         function (response) {
-        //             return response.json();
-        //         }
-        //     )
-        //     .then(
-        //         function (data) {
-        //             console.log(data);
-        //             for (var key in data['Time Series (Daily)']) {
-        //                 stockChartXValueFuction.push(key);
-        //                 stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
+            .then(
+                function (response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function (data) {
+                    console.log(data);
+                    for (var key in data['Time Series (Daily)']) {
+                        stockChartXValueFuction.push(key);
+                        stockChartYValueFuction.push(data['Time Series (Daily)'][key]['1. open']);
 
-        //             }
-        //             // console.log(stockChartXValueFuction)
-        //             pointerToThis.setState({
-        //                 stockChartXValue: stockChartXValueFuction,
-        //                 stockChartYValue: stockChartYValueFuction
+                    }
+                    // console.log(stockChartXValueFuction)
+                    pointerToThis.setState({
+                        stockChartXValue: stockChartXValueFuction,
+                        stockChartYValue: stockChartYValueFuction
 
-        //             });
-        //         }
-        //     )
+                    });
+                }
+            )
 
     }
     render() {
@@ -96,7 +87,7 @@ class StocksApi extends React.Component {
                                             placeholder="Enter Stock Symbol"
                                             handleChange={(e) => this.setState({ searchField: e.target.value })} />
                                     </FormGroup>
-                                    <Button className="text-center  shadow-lg p-1 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
+                                    <Button className="text-center  shadow-lg p-2 mb-3 bg-white rounded" outline color="dark" onClick={this.handleSearch}><BsSearch /></Button>{' '}
                                 </InputGroup>
                             </Col>
                         </FormGroup>

@@ -46,8 +46,8 @@ console.log(this.state.rate)
 
     render() {
         return (
-            <Card  className="shadow-lg p-3 mb-5 bg-white rounded">
-                <CardHeader className="text-center">FV: Future Value</CardHeader>
+            <Card  className="shadow-lg p-1 mb-3 bg-white rounded">
+                <CardHeader className="text-center bg-dark text-light">FV: Future Value</CardHeader>
                 <CardBody>
                     <CardTitle className="text-center" tag="h5">Future Value (FV) is the value of an asset or cash at a specified date in the future that is equivalent in value to a specified sum today.</CardTitle>
 
