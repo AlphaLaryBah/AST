@@ -14,8 +14,8 @@ const StocksCard2 = (props) => {
           <CardTitle tag="h5" className="text-center">ADJUSTED DAILY PRICES</CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}
         </CardBody>
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
 
             <StocksApi />
 

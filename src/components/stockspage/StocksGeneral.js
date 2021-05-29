@@ -59,30 +59,27 @@ class StocksGeneral extends Component {
     componentWillMount() {
 
         window.localStorage.getItem('STocksGen');
-        this.setState({
-            STocksGen: JSON.parse(window.localStorage.getItem('STocksGen'))
-
-        })
+        this.setState(JSON.parse(window.localStorage.getItem('STocksGen')));
     }
     componentDidMount() {
 
-        if (!window.localStorage.setItem('STocksGen', JSON.stringify(this.state))) {
-            this.fetchStocks();
+        // if (!window.localStorage.setItem('STocksGen', JSON.stringify(this.state))) {
+        //     this.fetchStocks();
 
 
-        } else {
+        // } else {
 
 
-            console.log("using data from local storage")
-            console.log(window.localStorage.getItem('STocksGen'))
+        //     console.log("using data from local storage")
+        //     console.log(window.localStorage.getItem('STocksGen'))
 
-        }
+        // }
 
     }
 
     componentWillUpdate(nextProps, nextState) {
 
-        window.localStorage.setItem('STocksGen', JSON.stringify(this.state));
+        window.localStorage.setItem('STocksGen', JSON.stringify(nextState));
 
     }
     fetchStocks() {
@@ -106,7 +103,7 @@ class StocksGeneral extends Component {
         let quatrInc = [];
 
         // YEARLY  INCOME ARRAY
-
+        //let yearReports = [];
         let firstY = [];
         let secondY = [];
         let thirdY = [];
@@ -128,6 +125,7 @@ class StocksGeneral extends Component {
                     quatrInc.push(data.quarterlyReports[0].netIncome);
 
                     // YEARLY ANNual INCOME ARRAY from most current to old column
+                    //yearReports = data.annualReports.map(a => a.netIncome)
                     firstY.push(data.annualReports[4].netIncome);
                     secondY.push(data.annualReports[3].netIncome);
                     thirdY.push(data.annualReports[2].netIncome);
