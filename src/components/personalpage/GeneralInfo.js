@@ -22,7 +22,14 @@ class GeneralInfo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
+    // LOCAL STORAGE
+    componentWillMount() {
+        window.localStorage.getItem('GenInfo');
+        this.setState(JSON.parse(window.localStorage.getItem('GenInfo')));
+    }
+    componentWillUpdate(nextProps, nextState) {
+        window.localStorage.setItem('GenInfo', JSON.stringify(nextState));
+    }
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
@@ -41,11 +48,7 @@ class GeneralInfo extends Component {
         // CREATE A PROP TO PASS AS STATE FOR THE CHART
 
         let chartArr = this.props.chartArr;
-
-
         // console.log('Current state is: ' + JSON.stringify(this.state));
-        // alert('Current state is: ' + JSON.stringify(this.state));
-
         // PREVENT REFRESH DEFAULT ON SUBMIT
         event.preventDefault();
 

@@ -34,6 +34,14 @@ class GeneralInfo extends Component {
         });
     }
 
+    // LOCAL STORAGE
+    componentWillMount() {
+        window.localStorage.getItem('DayExpns');
+        this.setState(JSON.parse(window.localStorage.getItem('DayExpns')));
+    }
+    componentWillUpdate(nextProps, nextState) {
+        window.localStorage.setItem('DayExpns', JSON.stringify(nextState));
+    }
     handleSubmit(event) {
         const total = [];
         let daily = this.props.finito;
@@ -73,7 +81,7 @@ class GeneralInfo extends Component {
             <div className="row row-content shadow-lg  mb-3 bg-white rounded">
                 <div className="col-12">
                     <h2 className="text-center rounded bg-primary text-light  shadow-lg mb-3 rounded">DAILY EXPENSES</h2>
-                    
+
                     <ExpensesChart data={this.state.chartArr} />
 
                 </div>
@@ -168,7 +176,7 @@ class GeneralInfo extends Component {
                                         <td>{this.state.eatingOut}</td>
                                     </tr>
                                     <tr>
-                                        <th>Investments</th>
+                                        <th>Transportation</th>
                                         <td>{this.state.transportation}</td>
                                     </tr>
                                     <tr>

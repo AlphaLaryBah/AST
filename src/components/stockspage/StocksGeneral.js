@@ -56,35 +56,21 @@ class StocksGeneral extends Component {
         this.fetchStocks(this.state.search)
 
     };
+    // LOCAL STORAGE
     componentWillMount() {
-
         window.localStorage.getItem('STocksGen');
         this.setState(JSON.parse(window.localStorage.getItem('STocksGen')));
     }
-    componentDidMount() {
-
-        // if (!window.localStorage.setItem('STocksGen', JSON.stringify(this.state))) {
-        //     this.fetchStocks();
-
-
-        // } else {
-
-
-        //     console.log("using data from local storage")
-        //     console.log(window.localStorage.getItem('STocksGen'))
-
-        // }
-
-    }
-
+    // componentDidMount() {
+    //     this.fetchStocks();
+    // }
     componentWillUpdate(nextProps, nextState) {
-
         window.localStorage.setItem('STocksGen', JSON.stringify(nextState));
-
     }
-    fetchStocks() {
-        // console.log('Current state is: ' + JSON.stringify(this.state));
 
+
+    // FETCH DATA
+    fetchStocks() {
         let look = this.props.look;
         look = this.state.search;
 

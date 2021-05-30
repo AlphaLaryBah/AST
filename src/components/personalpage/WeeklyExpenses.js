@@ -28,7 +28,14 @@ class GeneralInfo extends Component {
 
     }
 
-
+    // LOCAL STORAGE
+    componentWillMount() {
+        window.localStorage.getItem('WeekExpns');
+        this.setState(JSON.parse(window.localStorage.getItem('WeekExpns')));
+    }
+    componentWillUpdate(nextProps, nextState) {
+        window.localStorage.setItem('WeekExpns', JSON.stringify(nextState));
+    }
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
@@ -179,7 +186,7 @@ class GeneralInfo extends Component {
                                     </tr>
                                     <tr>
 
-                                        <th>Investments</th>
+                                        <th>Transportation</th>
                                         <td>{this.state.transportation}</td>
 
                                     </tr>

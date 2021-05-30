@@ -20,7 +20,14 @@ class GeneralInfo extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    // LOCAL STORAGE
+    componentWillMount() {
+        window.localStorage.getItem('MonExpns');
+        this.setState(JSON.parse(window.localStorage.getItem('MonExpns')));
+    }
+    componentWillUpdate(nextProps, nextState) {
+        window.localStorage.setItem('MonExpns', JSON.stringify(nextState));
+    }
 
     handleInputChange(event) {
         const target = event.target;
@@ -168,13 +175,13 @@ class GeneralInfo extends Component {
                                     </tr>
                                     <tr>
 
-                                       <th>EatingOut</th>
+                                        <th>EatingOut</th>
                                         <td>{this.state.eatingOut}</td>
 
                                     </tr>
                                     <tr>
 
-                                        <th>Investments</th>
+                                        <th>Transportation</th>
                                         <td>{this.state.transportation}</td>
 
                                     </tr>

@@ -26,12 +26,20 @@ class StocksApi extends React.Component {
         this.fetchStocks(this.state.searchField)
 
     };
-
-    componentDidMount() {
-        this.fetchStocks();
+    // LOCAL STORAGE
+    componentWillMount() {
+        window.localStorage.getItem('STocksApI');
+        this.setState(JSON.parse(window.localStorage.getItem('STocksApI')));
+    }
+    componentWillUpdate(nextProps, nextState) {
+        window.localStorage.setItem('STocksApI', JSON.stringify(nextState));
     }
 
+    // componentDidMount() {
+    //     this.fetchStocks();
+    // }
 
+    // FETCH DATA
     fetchStocks(event) {
         let query = this.props.query;
         query = this.state.searchField;
