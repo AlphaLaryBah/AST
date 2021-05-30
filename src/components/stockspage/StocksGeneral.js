@@ -190,9 +190,9 @@ class StocksGeneral extends Component {
                                     list1="CAGR 5yrs:"
                                     badge1={fiveYears + "%"}
                                     list2="EPS:"
-                                    badge2={"$" + " " + earningsPS}
+                                    badge2={"$  " + earningsPS}
                                     list3="B/V:"
-                                    badge3={"$" + " " + BV}
+                                    badge3={"$ " + BV}
                                     list4={this.state.company + "'s Shares"}
                                     badge4={this.state.balanceSheet.sharesOutStanding}
                                 />
