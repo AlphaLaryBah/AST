@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import PersonCard2 from "./personalpage/PersonCard2";
 import GeneralInfo from "./personalpage/GeneralInfo";
-import PersNavs from "./personalpage/PersNavs"
+import PersNavs from "./personalpage/PersNavs";
+import PersAlert from './personalpage/PersAlert';
 import "./personal.css";
 
 
@@ -21,7 +22,10 @@ function Personal() {
           </Breadcrumb>
           <hr />
         </div>
-      </div>
+    </div>
+    <div className="d-flex justify-content-center">
+      <PersAlert />
+    </div>
 
     <div className="container-fluid" style={{ marginTop: 10 }}>
       <div className="row">
